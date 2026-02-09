@@ -28,8 +28,8 @@ export default function RotatingPFP() {
         alt={DATA.name}
         onMouseEnter={startMusic}
         onMouseLeave={stopMusic}
-        className="size-[104px] -translate-x-10 translate-y-10 rounded-full border-2 border-border object-cover 
-                   transition-all duration-500
+        className="size-[120px] -translate-x-10 translate-y-8 rounded-full border-2 border-border object-cover 
+                   transition-all duration-200
                    hover:animate-[spin_3s_linear_infinite] hover:scale-110 
                    cursor-pointer shadow-xl aspect-square"
       />

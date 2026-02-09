@@ -18,7 +18,7 @@ export const DATA = {
     { name: "mongoDB" },
     { name: "prisma" },
     { name: "docker" },
-    { name: "break prod" },
+    { name: "breaking prod" },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -196,6 +196,13 @@ export const DATA = {
         "",
       mlh: "",
       links: [],
+    },
+  ],
+  reads: [
+    {
+      title: "first principles thinking",
+      href: "https://fs.blog/first-principles/",
+      icon: Icons.article,
     },
   ],
 } as const;

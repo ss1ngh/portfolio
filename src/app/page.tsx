@@ -23,7 +23,7 @@ export default function Page() {
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-2xl font-semibold tracking-tighter sm:text-xl lg:text-4xl"
+                className="text-3xl font-semibold italic tracking-tighter sm:text-2xl lg:text-3xl"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0]} here`}
               />
@@ -39,20 +39,17 @@ export default function Page() {
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-3 max-w-xl mx-auto">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">about</h2>
+            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">about me</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty text-base font-sans leading-relaxed text-muted-foreground dark:prose-invert prose-p:my-0">
               <Markdown>
                 {DATA.summary}
               </Markdown>
-              <p className="pt-5 text-base font-serif italic text-muted-foreground/80">
-                &ldquo;keen about figuring out how computers work under the hood - the low level stuff, closer to metal.  till then we center divs and write CRUD&rdquo;
-              </p>
             </div>
           </BlurFade>
         </div>
-      </section>
+      </section >
 
       {/* <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
@@ -102,13 +99,13 @@ export default function Page() {
       <section id="skills">
         <div className="pt-4 flex min-h-0 flex-col gap-y-4 max-w-xl mx-auto">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">skills and technologies</h2>
+            <h2 className="text-base font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">skills and technologies</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
                 <div className="border bg-white rounded-sm h-5 px-3 flex items-center gap-2">
-                  <span className="text-sm font-medium text-black">{skill.name}</span>
+                  <span className="text-sm font-semibold text-black">{skill.name}</span>
                 </div>
               </BlurFade>
             ))}
@@ -138,6 +135,6 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-    </main>
+    </main >
   );
 }
