@@ -58,18 +58,17 @@ export const DATA = {
     },
   },
 
-  // work: [
-  //   {
-  //     company: "",
-  //     href: "",
-  //     badges: [],
-  //     location: "",
-  //     title: "",
-  //     logoUrl: "",
-  //     start: "",
-  //     end: "",
-  //     description: ""    },
-  // ],
+  work: [] as {
+    company: string;
+    href: string;
+    badges: string[];
+    location: string;
+    title: string;
+    logoUrl: string;
+    start: string;
+    end: string;
+    description: string;
+  }[],
 
   education: [
     {
@@ -218,7 +217,7 @@ export const DATA = {
       image:
         "",
       mlh: "",
-      links: [],
+      links: [] as { title: string; icon: React.ReactNode; href: string }[],
     },
   ],
   reads: [
