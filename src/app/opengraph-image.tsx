@@ -1,4 +1,4 @@
- 
+
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
 
@@ -124,8 +124,8 @@ export default async function Image() {
                             )}
                             <div style={styles.mainContainer}>
                                 <div style={styles.title}>{DATA.name}</div>
-                                {DATA.description && (
-                                    <div style={styles.description}>{DATA.description}</div>
+                                {DATA.summary && (
+                                    <div style={styles.description}>{DATA.summary}</div>
                                 )}
                             </div>
                         </div>
