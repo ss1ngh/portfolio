@@ -1,14 +1,15 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
+import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function ProjectsSection() {
     return (
         <section id="projects">
-            <div className="flex min-h-0 flex-col gap-y-10 pt-8">
-                <div className="flex flex-col gap-y-4 items-center justify-center">
+            <div className="flex min-h-0 flex-col pt-12">
+                <div className="flex flex-col gap-y-4 mb-10 items-center justify-center">
                     <div className="flex items-center w-full">
                         <div
                             className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent"
@@ -26,7 +27,8 @@ export default function ProjectsSection() {
                         <h2 className="text-xl font-bold tracking-tighter sm:text-xl">stuff i've been working on</h2>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
+
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr mb-6">
                     {DATA.projects.map((project, id) => (
                         <BlurFade
                             key={project.title}
@@ -45,6 +47,20 @@ export default function ProjectsSection() {
                             />
                         </BlurFade>
                     ))}
+                </div>
+
+                <Link
+                href={"/projects"}
+                className="flex justify-center mb-4">
+                    <div className="flex items-center w-fit">
+                            <div className="border bg-primary z-10 rounded-xl px-4">
+                                <span className="text-background text-sm font-medium">view all</span>
+                            </div>
+                    </div>
+                </Link>
+
+                <div className="flex items-center w-full">
+                    <div className="h-px w-full bg-linear-to-r from-transparent via-foreground/40 to-transparent" />
                 </div>
             </div>
         </section>

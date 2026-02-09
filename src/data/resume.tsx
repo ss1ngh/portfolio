@@ -84,7 +84,7 @@ export const DATA = {
   projects: [
     {
       title: "annot8",
-      href: "https://annot8.ssngh.xyz/",
+      href: "https://github.com/ss1ngh/annot8",
       active: true,
       description:
         "dual-view workspace for seamless PDF reading and note-taking.",
@@ -99,11 +99,88 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://github.com/ss1ngh/annot8",
+          href: "https://annot8.ssngh.xyz",
           icon: <Icons.globe className="size-3" />,
         },
       ],
       image: "/annot8.png",
+      video:
+        "",
+    },
+    {
+      title: "ts-booking",
+      href: "https://github.com/ss1ngh/ts-booking",
+      active: true,
+      description:
+        "production-grade booking backend infrastructure in typescript",
+      technologies: [
+        "typescript",
+        "zod",
+        "express",
+        "postgreSQL",
+        "prisma",
+        "winston"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/ts-booking.png",
+      video:
+        "",
+    },
+    {
+      title: "sh0rten",
+      href: "https://github.com/ss1ngh/sh0rten",
+      active: true,
+      description:
+        "url shortener with qr code generation",
+      technologies: [
+        "react",
+        "tailwind",
+        "javascript",
+        "zod",
+        "express",
+        "mongoDB",
+        "axios",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://sh0rten.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/shorten.png",
+      video:
+        "",
+    },
+    {
+      title: "tickr - frontend",
+      href: "https://github.com/ss1ngh/tickr",
+      active: true,
+      description:
+        "personalized portfolio tracker",
+      technologies: [
+        "next.js",
+        "better-auth",
+        "tailwind",
+        "typescript",
+        "zod",
+        "postgreSQL",
+        "prisma",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://tickr.ssngh.xyz/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/tickr.png",
       video:
         "",
     },
