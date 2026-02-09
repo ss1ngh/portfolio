@@ -184,6 +184,29 @@ export const DATA = {
       video:
         "",
     },
+    {
+      title: "pdf-wiz",
+      href: "https://github.com/ss1ngh/pdf-wiz",
+      active: true,
+      description:
+        "multi pdf chat app",
+      technologies: [
+        "python",
+        "streamlit",
+        "langchain",
+        "RAG",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://pdf-wiz.streamlit.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/pdf-wiz.png",
+      video:
+        "",
+    },
   ],
   hackathons: [
     {
