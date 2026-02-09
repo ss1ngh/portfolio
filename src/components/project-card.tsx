@@ -84,7 +84,9 @@ export function ProjectCard({
         </Link>
         {links && links.length > 0 && (
           <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
+            {links
+            .filter((link)=> link.href !== "")
+            .map((link, idx) => (
               <Link
                 href={link.href}
                 key={idx}

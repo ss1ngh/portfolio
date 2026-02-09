@@ -1,6 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -50,11 +51,13 @@ export default function ProjectsSection() {
                 </div>
 
                 <Link
-                href={"/projects"}
+                href={"https://github.com/ss1ngh/"}
+                target="_blank"
                 className="flex justify-center mb-4">
                     <div className="flex items-center w-fit">
-                            <div className="border bg-primary z-10 rounded-xl px-4">
-                                <span className="text-background text-sm font-medium">view all</span>
+                            <div className="border bg-primary z-10 rounded-xl px-4 flex items-center transition-transform duration-200 ease-out hover:scale-[1.10]">
+                                <span className="text-background text-sm font-medium flex items-center">view more on</span>
+                                <span className="text-black mx-1"><GitHubLogoIcon/></span>
                             </div>
                     </div>
                 </Link>

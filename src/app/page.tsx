@@ -10,6 +10,7 @@ import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 // import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
+import RotatingPFP from "@/components/section/rotating-pfp";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -22,16 +23,13 @@ export default function Page() {
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-xl font-semibold tracking-tighter sm:text-xl lg:text-4xl"
+                className="text-2xl font-semibold tracking-tighter sm:text-xl lg:text-3xl"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0]} here`}
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-22 md:size-28 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <RotatingPFP/>
             </BlurFade>
           </div>
         </div>
@@ -41,7 +39,7 @@ export default function Page() {
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-lg font-bold">about</h2>
+            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">about</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert prose-p:my-0">
@@ -104,7 +102,7 @@ export default function Page() {
       <section id="skills">
         <div className="pt-4 flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-lg font-bold">skills and technologies</h2>
+            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">skills and technologies</h2>
           </BlurFade>
           <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
