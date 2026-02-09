@@ -11,7 +11,7 @@ export default function ProjectsSection() {
         <section id="projects">
             <div className="flex min-h-0 flex-col pt-12">
                 <div className="flex flex-col gap-y-4 mb-10 items-center justify-center">
-                    <div className="flex items-center w-full">
+                    <div className="flex items-center w-full max-w-[800px] mx-auto">
                         <div
                             className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent"
 
@@ -51,18 +51,18 @@ export default function ProjectsSection() {
                 </div>
 
                 <Link
-                href={"https://github.com/ss1ngh/"}
-                target="_blank"
-                className="flex justify-center mb-4">
+                    href={"https://github.com/ss1ngh/"}
+                    target="_blank"
+                    className="flex justify-center mb-4">
                     <div className="flex items-center w-fit">
-                            <div className="border bg-primary z-10 rounded-xl px-4 flex items-center transition-transform duration-200 ease-out hover:scale-[1.10]">
-                                <span className="text-background text-sm font-medium flex items-center">view more on</span>
-                                <span className="text-black mx-1"><GitHubLogoIcon/></span>
-                            </div>
+                        <div className="border bg-primary z-10 rounded-xl px-4 flex items-center transition-transform duration-200 ease-out hover:scale-[1.10]">
+                            <span className="text-background text-sm font-medium flex items-center">view more on</span>
+                            <span className="text-black mx-1"><GitHubLogoIcon /></span>
+                        </div>
                     </div>
                 </Link>
 
-                <div className="flex items-center w-full">
+                <div className="flex items-center w-full max-w-[800px] mx-auto">
                     <div className="h-px w-full bg-linear-to-r from-transparent via-foreground/40 to-transparent" />
                 </div>
             </div>

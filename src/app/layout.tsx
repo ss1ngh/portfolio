@@ -1,5 +1,4 @@
 import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -60,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
@@ -68,25 +67,23 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
-              <FlickeringGrid
-                className="h-full w-full"
-                squareSize={2}
-                gridGap={2}
-                style={{
-                  maskImage: "linear-gradient(to bottom, black, transparent)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
-                }}
-              />
-            </div>
-            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
-              {children}
-            </div>
-            <Navbar />
-          </TooltipProvider>
-        </ThemeProvider>
+        <TooltipProvider delayDuration={0}>
+          <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <FlickeringGrid
+              className="h-full w-full"
+              squareSize={2}
+              gridGap={2}
+              style={{
+                maskImage: "linear-gradient(to bottom, black, transparent)",
+                WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+              }}
+            />
+          </div>
+          <div className="relative z-10 mx-auto py-12 pb-24 sm:py-24 px-6">
+            {children}
+          </div>
+          <Navbar />
+        </TooltipProvider>
       </body>
     </html>
   );

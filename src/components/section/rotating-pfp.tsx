@@ -11,13 +11,13 @@ export default function RotatingPFP() {
       audioRef.current = new Audio("/Suits.mp3");
       audioRef.current.loop = true;
     }
-    audioRef.current.play().catch(() => {});
+    audioRef.current.play().catch(() => { });
   };
 
   const stopMusic = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; 
+      audioRef.current.currentTime = 0;
     }
   };
 
@@ -28,10 +28,10 @@ export default function RotatingPFP() {
         alt={DATA.name}
         onMouseEnter={startMusic}
         onMouseLeave={stopMusic}
-        className="size-28 rounded-full border-2 border-border object-cover 
+        className="size-[104px] -translate-x-10 translate-y-10 rounded-full border-2 border-border object-cover 
                    transition-all duration-500
                    hover:animate-[spin_3s_linear_infinite] hover:scale-110 
-                   cursor-pointer shadow-xl"
+                   cursor-pointer shadow-xl aspect-square"
       />
     </div>
   );

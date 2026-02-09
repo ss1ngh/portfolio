@@ -5,24 +5,24 @@ export const DATA = {
   name: "shreyansh",
   initials: "SS",
   url: "https://ssngh.xyz",
-  summary: "i write code and build apps \n\n learning go, backend fundamentals, scalable systems & database internals",
+  summary: "i write code and build apps \n\n learning go, \n\nbackend fundamentals, \n\n& database internals",
   avatarUrl: "./giga-chad2.jpg",
   skills: [
-    { name: "react"},
-    { name: "next.js"},
-    { name: "express"},
-    { name: "tailwind"},
-    { name: "typescript"},
-    { name: "node.js"},
-    { name: "postgresSQL"},
-    { name: "mongoDB"},
-    { name: "prisma"},
-    { name: "docker"},
-    { name: "break prod"},
+    { name: "react" },
+    { name: "next.js" },
+    { name: "express" },
+    { name: "tailwind" },
+    { name: "typescript" },
+    { name: "node.js" },
+    { name: "postgresSQL" },
+    { name: "mongoDB" },
+    { name: "prisma" },
+    { name: "docker" },
+    { name: "break prod" },
   ],
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home"},
-    { href: "/reads", icon: NotepadText, label: "Reads"},
+    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/reads", icon: NotepadText, label: "Reads" },
   ],
   contact: {
     email: "ssngh.me@gmail.com",
@@ -78,7 +78,7 @@ export const DATA = {
       start: "2023",
       end: "2027",
     },
-   
+
   ],
 
   projects: [
