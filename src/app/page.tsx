@@ -10,7 +10,7 @@ import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 // import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
-import RotatingPFP from "@/components/section/rotating-pfp";
+import GlitchPFP from "@/components/section/pfp";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -29,7 +29,7 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <RotatingPFP />
+              <GlitchPFP />
             </BlurFade>
           </div>
         </div>
