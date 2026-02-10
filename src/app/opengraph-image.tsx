@@ -111,6 +111,7 @@ export default async function Image() {
         const imageUrl = DATA.avatarUrl
             ? new URL(DATA.avatarUrl, DATA.url).toString()
             : undefined;
+        const gifUrl = new URL("../../public/coding-pixel.gif", import.meta.url).toString();
 
         return new ImageResponse(
             (
@@ -124,9 +125,15 @@ export default async function Image() {
                             )}
                             <div style={styles.mainContainer}>
                                 <div style={styles.title}>{DATA.name}</div>
-                                {DATA.summary && (
-                                    <div style={styles.description}>{DATA.summary}</div>
-                                )}
+                                <img
+                                    src={gifUrl}
+                                    alt="Coding pixel art"
+                                    style={{
+                                        width: "400px",
+                                        height: "auto",
+                                        borderRadius: "8px",
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
