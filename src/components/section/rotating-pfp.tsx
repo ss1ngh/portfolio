@@ -10,6 +10,7 @@ export default function RotatingPFP() {
     if (!audioRef.current) {
       audioRef.current = new Audio("/Suits.mp3");
       audioRef.current.loop = true;
+      audioRef.current.volume = 0.1;
     }
     audioRef.current.play().catch(() => { });
   };

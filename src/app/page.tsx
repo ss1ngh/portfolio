@@ -96,6 +96,12 @@ export default function Page() {
         </div>
       </section> */}
 
+      <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
+        <div className="max-w-xl mx-auto overflow-hidden rounded-md">
+          <img src="/coding-pixel.gif" className="w-full scale-[1.15]" />
+        </div>
+      </BlurFade>
+
       <section id="skills">
         <div className="pt-4 flex min-h-0 flex-col gap-y-4 max-w-xl mx-auto">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
