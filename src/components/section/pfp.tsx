@@ -71,7 +71,7 @@ export default function GlitchPFP() {
           fill="currentColor"
           strokeWidth="0"
           viewBox="0 0 512 512"
-          className={`text-muted-foreground hover:text-foreground transition-all duration-500 ${isBateman ? "scale-x-[-1]" : ""}`}
+          className={`text-muted-foreground hover:text-foreground transition-all duration-500 animate-[pulse-opacity_2s_ease-in-out_infinite] ${isBateman ? "scale-x-[-1]" : ""}`}
           height="12"
           width="12"
           xmlns="http://www.w3.org/2000/svg"
@@ -123,6 +123,10 @@ export default function GlitchPFP() {
         }
         .animate-glitch {
           animation: glitch 0.6s ease-in-out !important;
+        }
+        @keyframes pulse-opacity {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 1; }
         }
       `}</style>
     </div>
