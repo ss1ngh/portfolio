@@ -111,7 +111,7 @@ export default async function Image() {
         const imageUrl = DATA.avatarUrl
             ? new URL(DATA.avatarUrl, DATA.url).toString()
             : undefined;
-        const gifUrl = new URL("../../public/coding-pixel.gif", import.meta.url).toString();
+        const gifUrl = `${DATA.url}/og-image.png`;
 
         return new ImageResponse(
             (
