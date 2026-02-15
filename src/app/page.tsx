@@ -22,14 +22,14 @@ export default function Page() {
       <section id="hero">
         <div className="w-full max-w-xl mx-auto space-y-8">
           <div className="gap-2 gap-y-4 flex flex-col md:flex-row justify-between items-center">
-            <div className="relative gap-2 flex flex-col order-2 md:order-1">
+            <div className="relative gap-2 flex flex-col order-2 md:order-1 w-full items-center md:items-start md:w-auto">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl pt-6 font-semibold italic tracking-tighter sm:text-4xl xl:text-5xl"
+                className="text-3xl pt-6 font-semibold italic tracking-tighter sm:text-4xl xl:text-5xl text-center md:text-left"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0]} here`}
               />
-              <StatusIndicator className="absolute left-0 top-full mt-2" />
+              <StatusIndicator className="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 top-full mt-2" />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 ">
               <GlitchPFP />
