@@ -25,7 +25,7 @@ export default function Page() {
             <div className="relative gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl pt-6 font-semibold italic tracking-tighter sm:text-2xl lg:text-3xl"
+                className="text-3xl pt-6 font-semibold italic tracking-tighter sm:text-4xl xl:text-5xl"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0]} here`}
               />
@@ -42,7 +42,7 @@ export default function Page() {
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-3 max-w-xl mx-auto mt-12">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">about me</h2>
+            <h2 className="text-xl font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit sm:text-2xl">about me</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty text-base font-sans leading-relaxed text-muted-foreground prose-p:my-0">
@@ -108,7 +108,7 @@ export default function Page() {
       <section id="skills">
         <div className="pt-4 flex min-h-0 flex-col gap-y-4 max-w-xl mx-auto">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-base font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">skills and technologies</h2>
+            <h2 className="text-xl font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit sm:text-2xl">skills and technologies</h2>
           </BlurFade>
           <div className="flex flex-wrap justify-center gap-2">
             {DATA.skills.map((skill, id) => (

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, NotepadText } from "lucide-react";
+import { HomeIcon, NotebookIcon, NotepadText, BriefcaseIcon } from "lucide-react";
 
 export const DATA = {
   name: "shreyansh",
@@ -22,6 +22,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    // { href: "/freelance", icon: BriefcaseIcon, label: "Freelance" },
     { href: "/reads", icon: NotepadText, label: "Reads" },
   ],
   contact: {
@@ -56,6 +57,26 @@ export const DATA = {
         navbar: true,
       },
     },
+  },
+
+  freelance: {
+    title: "Freelance Software Engineer",
+    tagline: "I build MVPs in under 3 weeks",
+    summary: "Stop wasting time on over-engineering. I build high-quality, scalable MVPs that get you to market fast.",
+    services: [
+      {
+        title: "MVP Development",
+        description: "From idea to deployed product in < 3 weeks. Full stack implementation with modern tech.",
+      },
+      {
+        title: "Rapid Prototyping",
+        description: "Functional prototypes to test your hypothesis before full investment.",
+      },
+      {
+        title: "Full Stack Engineering",
+        description: "Complex web applications using Next.js, TypeScript, and scalable backend infrastructure.",
+      },
+    ],
   },
 
   work: [] as {

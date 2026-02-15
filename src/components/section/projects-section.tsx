@@ -9,8 +9,8 @@ const BLUR_FADE_DELAY = 0.04;
 export default function ProjectsSection() {
     return (
         <section id="projects">
-            <div className="flex min-h-0 flex-col pt-8">
-                <div className="flex flex-col gap-y-4 mb-10 items-center justify-center">
+            <div className="flex min-h-0 flex-col pt-6 sm:pt-8">
+                <div className="flex flex-col gap-y-4 mb-6 sm:mb-10 items-center justify-center">
                     <div className="flex items-center w-full max-w-[800px] mx-auto">
                         <div
                             className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent"
