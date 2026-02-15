@@ -56,7 +56,7 @@ export default function GlitchPFP() {
       <img
         src={isBateman ? "/patrick-bateman.jpg" : DATA.avatarUrl}
         alt={isBateman ? "Patrick Bateman" : DATA.name}
-        className={`size-[120px] -translate-x-4 translate-y-14 rounded-2xl border-2 border-border object-cover 
+        className={`size-[120px] translate-x-0 translate-y-0 md:-translate-x-4 md:translate-y-14 rounded-2xl border-2 border-border object-cover 
                    transition-all duration-300
                    cursor-pointer shadow-xl aspect-square
                    ${isGlitching ? "animate-glitch" : ""}`}
