@@ -35,7 +35,7 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
 
     void codeToHtml(codeText, {
       lang: lang as any,
-      theme: "github-dark",
+      theme: "github-light",
     })
       .then((html) => {
         const parser = new DOMParser();

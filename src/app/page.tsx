@@ -12,6 +12,8 @@ import ProjectsSection from "@/components/section/projects-section";
 import { ArrowUpRight } from "lucide-react";
 import GlitchPFP from "@/components/section/pfp";
 
+import { StatusIndicator } from "@/components/ui/status-indicator";
+
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
@@ -20,15 +22,16 @@ export default function Page() {
       <section id="hero">
         <div className="w-full max-w-xl mx-auto space-y-8">
           <div className="gap-2 gap-y-4 flex flex-col md:flex-row justify-between items-center">
-            <div className="gap-2 flex flex-col order-2 md:order-1">
+            <div className="relative gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold italic tracking-tighter sm:text-2xl lg:text-3xl"
+                className="text-3xl pt-6 font-semibold italic tracking-tighter sm:text-2xl lg:text-3xl"
                 yOffset={8}
                 text={`hi, ${DATA.name.split(" ")[0]} here`}
               />
+              <StatusIndicator className="absolute left-0 top-full mt-2" />
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 ">
               <GlitchPFP />
             </BlurFade>
           </div>
@@ -37,12 +40,12 @@ export default function Page() {
 
 
       <section id="about">
-        <div className="flex min-h-0 flex-col gap-y-3 max-w-xl mx-auto">
+        <div className="flex min-h-0 flex-col gap-y-3 max-w-xl mx-auto mt-12">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <h2 className="text-md font-bold transition-transform duration-300 ease-out hover:scale-110 w-fit">about me</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="prose max-w-full text-pretty text-base font-sans leading-relaxed text-muted-foreground dark:prose-invert prose-p:my-0">
+            <div className="prose max-w-full text-pretty text-base font-sans leading-relaxed text-muted-foreground prose-p:my-0">
               <Markdown>
                 {DATA.summary}
               </Markdown>
@@ -110,8 +113,8 @@ export default function Page() {
           <div className="flex flex-wrap justify-center gap-2">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-white rounded-sm h-5 px-3 flex items-center gap-2">
-                  <span className="text-sm font-semibold text-black">{skill.name}</span>
+                <div className="bg-black rounded-sm h-6 px-3 py-2 transition-transform duration-300 ease-in-out hover:scale-90 flex items-center gap-2">
+                  <span className="text-sm font-semibold text-white">{skill.name}</span>
                 </div>
               </BlurFade>
             ))}

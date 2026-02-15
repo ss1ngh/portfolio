@@ -25,7 +25,7 @@ const Dock = ({ className, children }: DockProps) => {
 const DockIcon = ({ className, children }: { className?: string; children?: ReactNode }) => {
   return (
     <motion.div
-      whileHover={{ 
+      whileHover={{
         margin: "0 2px"
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}

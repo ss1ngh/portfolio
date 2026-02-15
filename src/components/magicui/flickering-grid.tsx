@@ -16,14 +16,14 @@ interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
-  squareSize = 4,
+  squareSize = 8,
   gridGap = 6,
   flickerChance = 0.3,
   color,
   width,
   height,
   className,
-  maxOpacity = 0.3,
+  maxOpacity = 0.5,
   ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -34,7 +34,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
   const resolveColor = useCallback((colorValue: string | undefined): string => {
     if (typeof window === "undefined") {
-      return "rgb(0, 0, 0)"
+      return "rgba(240, 22, 22, 1)"
     }
 
     const colorToResolve = colorValue || "var(--foreground)"

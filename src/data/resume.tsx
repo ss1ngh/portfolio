@@ -6,7 +6,7 @@ export const DATA = {
   initials: "SS",
   url: "https://ssngh.xyz",
   summary: "i write code and build apps \n\n learning go, \n\nbackend fundamentals, \n\n& database internals",
-  avatarUrl: "./giga-chad2.jpg",
+  avatarUrl: "/giga-chad2.jpg",
   skills: [
     { name: "react" },
     { name: "next.js" },
@@ -99,7 +99,7 @@ export const DATA = {
         {
           type: "Website",
           href: "https://annot8.ssngh.xyz",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/annot8.png",
@@ -124,7 +124,7 @@ export const DATA = {
         {
           type: "Website",
           href: "",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/ts-booking.png",
@@ -150,7 +150,7 @@ export const DATA = {
         {
           type: "Website",
           href: "https://sh0rten.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/shorten.png",
@@ -176,7 +176,7 @@ export const DATA = {
         {
           type: "Website",
           href: "https://tickr.ssngh.xyz/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/tickr.png",
@@ -199,7 +199,7 @@ export const DATA = {
         {
           type: "Website",
           href: "https://pdf-wiz.streamlit.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/pdf-wiz.png",

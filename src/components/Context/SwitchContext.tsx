@@ -17,7 +17,9 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     useEffect(() => {
         const storedValue = localStorage.getItem("isSwitchOn")
         if (storedValue !== null) {
-            setIsSwitchOn(JSON.parse(storedValue))
+            const isDark = JSON.parse(storedValue)
+            setIsSwitchOn(isDark)
+
         }
         setIsLoaded(true)
     }, [])
@@ -26,6 +28,9 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsSwitchOn((prev) => {
             const newValue = !prev
             localStorage.setItem("isSwitchOn", JSON.stringify(newValue))
+
+            // Theme toggling removed - always light
+
             return newValue
         })
     }

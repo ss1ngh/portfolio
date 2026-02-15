@@ -17,7 +17,7 @@ export default function ContactSection() {
         />
       </div>
       <div className="relative flex flex-col items-center gap-4 text-center">
-        <p className="mx-auto max-w-lg text-white/60 text-balance">
+        <p className="mx-auto max-w-lg text-black/60 text-balance">
           Want to chat? Just shoot me a dm{" "}
           <Link
             href={DATA.contact.social.X.url}

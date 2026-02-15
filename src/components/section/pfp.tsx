@@ -33,7 +33,7 @@ export default function GlitchPFP() {
     if (isGlitching) return;
 
     // Play sparks sound
-    const sparksSound = new Audio("/sparks.mp3");
+    const sparksSound = new Audio("/spark1.mp3");
     sparksSound.volume = 0.3;
     sparksSound.play().catch(() => { });
 
@@ -56,14 +56,14 @@ export default function GlitchPFP() {
       <img
         src={isBateman ? "/patrick-bateman.jpg" : DATA.avatarUrl}
         alt={isBateman ? "Patrick Bateman" : DATA.name}
-        className={`size-[120px] -translate-x-4 translate-y-10 rounded-2xl border-2 border-border object-cover 
+        className={`size-[120px] -translate-x-4 translate-y-14 rounded-2xl border-2 border-border object-cover 
                    transition-all duration-300
                    cursor-pointer shadow-xl aspect-square
                    ${isGlitching ? "animate-glitch" : ""}`}
       />
       <button
         onClick={handleToggle}
-        className="absolute bottom-3 -right-3 cursor-pointer"
+        className="absolute -bottom-1 -right-2 cursor-pointer"
         title={isBateman ? "Back to normal" : "Sigma mode"}
       >
         <svg
@@ -71,7 +71,7 @@ export default function GlitchPFP() {
           fill="currentColor"
           strokeWidth="0"
           viewBox="0 0 512 512"
-          className={`text-muted-foreground hover:text-foreground transition-all duration-500 animate-[pulse-opacity_2s_ease-in-out_infinite] ${isBateman ? "scale-x-[-1]" : ""}`}
+          className={`text-black-50 transition-all duration-500 animate-[scale-pulse_3s_ease-in-out_infinite] ${isBateman ? "scale-x-[-1]" : ""}`}
           height="12"
           width="12"
           xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export default function GlitchPFP() {
         </svg>
       </button>
 
-      <style jsx>{`
+      <style>{`
         @keyframes glitch {
           0% {
             filter: none;
@@ -124,9 +124,9 @@ export default function GlitchPFP() {
         .animate-glitch {
           animation: glitch 0.6s ease-in-out !important;
         }
-        @keyframes pulse-opacity {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 1; }
+        @keyframes scale-pulse {
+          0%, 100% { transform: scale(1.05); }
+          50% { transform: scale(1.1); }
         }
       `}</style>
     </div>

@@ -65,7 +65,7 @@ export function ProjectCard({
           href={href || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
+          className="block border-b border-border"
         >
           {video ? (
             <video
@@ -82,46 +82,36 @@ export function ProjectCard({
             <div className="w-full h-48 bg-muted" />
           )}
         </Link>
-        {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links
-            .filter((link)=> link.href !== "")
-            .map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
-                  variant="default"
-                >
-                  {link.icon}
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
           </div>
-          <Link
-            href={href || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            aria-label={`Open ${title}`}
-          >
-            <GitHubLogoIcon className="h-4 w-4" aria-hidden />
-          </Link>
+          <div className="flex items-center gap-2">
+            {links && links.length > 0 && links.map((link, idx) => (
+              <Link
+                key={idx}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-muted-foreground text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              >
+                {link.icon}
+              </Link>
+            ))}
+            <Link
+              href={href || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-muted-foreground text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              aria-label={`Open ${title}`}
+            >
+              <GitHubLogoIcon className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground">
           <Markdown>{description}</Markdown>
         </div>
         {tags && tags.length > 0 && (
@@ -129,7 +119,7 @@ export function ProjectCard({
             {tags.map((tag) => (
               <Badge
                 key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
+                className="text-[11px] bg-black text-white font-medium border border-border h-6 w-fit px-2"
                 variant="outline"
               >
                 {tag}

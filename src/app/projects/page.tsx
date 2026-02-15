@@ -51,9 +51,9 @@ export default function ProjectsPage() {
                         target="_blank"
                         className="flex justify-center mb-4">
                         <div className="flex items-center w-fit">
-                            <div className="border bg-primary z-10 rounded-xl px-4 flex items-center transition-transform duration-200 ease-out hover:scale-[1.10]">
-                                <span className="text-background text-sm font-medium flex items-center">view more on</span>
-                                <span className="text-black mx-1"><GitHubLogoIcon /></span>
+                            <div className="border bg-primary z-10 rounded-xl px-4 py-1 flex items-center transition-transform duration-200 ease-out hover:scale-[1.10]">
+                                <span className="text-background text-sm font-medium flex items-center">view more on  </span>
+                                <span className="text-white mx-1"><GitHubLogoIcon /></span>
                             </div>
                         </div>
                     </Link>

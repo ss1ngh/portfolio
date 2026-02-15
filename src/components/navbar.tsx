@@ -33,7 +33,7 @@ export default function Navbar() {
 
           <Separator orientation="vertical" className="h-2/3 m-auto w-px bg-border mx-1" />
 
-        
+
           {Object.entries(DATA.contact.social)
             .filter(([_, social]) => social.navbar)
             .map(([name, social]) => (
