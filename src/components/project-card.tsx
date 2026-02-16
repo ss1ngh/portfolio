@@ -35,7 +35,7 @@ interface Props {
   image?: string;
   video?: string;
   links?: readonly {
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     type: string;
     href: string;
   }[];
@@ -89,17 +89,20 @@ export function ProjectCard({
             <h3 className="font-semibold">{title}</h3>
           </div>
           <div className="flex items-center gap-2">
-            {links && links.length > 0 && links.map((link, idx) => (
-              <Link
-                key={idx}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-muted-foreground text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                {link.icon}
-              </Link>
-            ))}
+            {links && links.length > 0 && links.map((link, idx) => {
+              if (!link.href) return null;
+              return (
+                <Link
+                  key={idx}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-muted-foreground text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  {link.icon}
+                </Link>
+              );
+            })}
             <Link
               href={href || "#"}
               target="_blank"

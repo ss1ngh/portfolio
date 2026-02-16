@@ -142,7 +142,7 @@ export const DATA = {
         {
           type: "Website",
           href: "",
-          // icon: <Icons.globe className="size-4" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/LLMark.png",
@@ -167,7 +167,7 @@ export const DATA = {
         {
           type: "Website",
           href: "",
-          // icon: <Icons.globe className="size-4" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/ts-booking.png",
