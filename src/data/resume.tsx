@@ -128,6 +128,28 @@ export const DATA = {
         "",
     },
     {
+      title: "LLMark",
+      href: "https://github.com/ss1ngh/LLMark",
+      active: false,
+      description:
+        "stop scrolling through miles of AI chats—anchor and jump to specific messages instantly using LLMark",
+      technologies: [
+        "react",
+        "typescript",
+        "tailwindcss",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          // icon: <Icons.globe className="size-4" />,
+        },
+      ],
+      image: "/LLMark.png",
+      video:
+        "",
+    },
+    {
       title: "ts-booking",
       href: "https://github.com/ss1ngh/ts-booking",
       active: true,
@@ -145,7 +167,7 @@ export const DATA = {
         {
           type: "Website",
           href: "",
-          icon: <Icons.globe className="size-4" />,
+          // icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/ts-booking.png",
