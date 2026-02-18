@@ -111,7 +111,7 @@ export default async function Image() {
         const imageUrl = DATA.avatarUrl
             ? new URL(DATA.avatarUrl, DATA.url).toString()
             : undefined;
-        const gifUrl = `${DATA.url}/og-image.png`;
+        const picUrl = "public/og-image.png";
 
         return new ImageResponse(
             (
@@ -126,8 +126,8 @@ export default async function Image() {
                             <div style={styles.mainContainer}>
                                 <div style={styles.title}>{DATA.name}</div>
                                 <img
-                                    src={gifUrl}
-                                    alt="Coding pixel art"
+                                    src={picUrl}
+                                    alt = "og-image"
                                     style={{
                                         width: "400px",
                                         height: "auto",
