@@ -12,7 +12,7 @@ import { DATA } from "@/data/resume";
 export default function Navbar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
-      <TooltipProvider>
+      <TooltipProvider delayDuration={0}>
         <Dock className="z-50 pointer-events-auto relative h-12 p-1.5 w-fit mx-auto flex gap-1.5 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5 rounded-2xl">
 
           {DATA.navbar.map((item) => (
@@ -24,7 +24,7 @@ export default function Navbar() {
                   </DockIcon>
                 </a>
               </TooltipTrigger>
-              <TooltipContent side="top" sideOffset={15} className="rounded-lg bg-background text-foreground px-3 py-1.5 text-xs font-mono lowercase border shadow-md">
+              <TooltipContent side="top" sideOffset={15} className="animate-none rounded-lg bg-background text-foreground px-3 py-1.5 text-xs font-mono lowercase border shadow-md">
                 <p>{item.label === "Reads" ? "goodreads" : item.label.toLowerCase()}</p>
                 <TooltipArrow className="fill-border" />
               </TooltipContent>
@@ -45,7 +45,7 @@ export default function Navbar() {
                     </DockIcon>
                   </a>
                 </TooltipTrigger>
-                <TooltipContent side="top" sideOffset={15} className="rounded-lg bg-background text-foreground px-3 py-1.5 text-xs font-mono lowercase border shadow-md">
+                <TooltipContent side="top" sideOffset={15} className="animate-none rounded-lg bg-background text-foreground px-3 py-1.5 text-xs font-mono lowercase border shadow-md">
                   <p>{name.toLowerCase()}</p>
                   <TooltipArrow className="fill-border" />
                 </TooltipContent>
