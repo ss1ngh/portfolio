@@ -150,6 +150,31 @@ export const DATA = {
         "",
     },
     {
+      title: "ts-booking",
+      href: "https://github.com/ss1ngh/ts-booking",
+      active: true,
+      description:
+        "over-engineered production-grade booking backend infrastructure in typescript",
+      technologies: [
+        "typescript",
+        "zod",
+        "express",
+        "postgreSQL",
+        "prisma",
+        "winston"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
+      image: "/ts-booking.png",
+      video:
+        "",
+    },
+    {
       title: "annot8",
       href: "https://github.com/ss1ngh/annot8",
       active: true,
@@ -171,31 +196,6 @@ export const DATA = {
         },
       ],
       image: "/annot8.png",
-      video:
-        "",
-    },
-    {
-      title: "ts-booking",
-      href: "https://github.com/ss1ngh/ts-booking",
-      active: true,
-      description:
-        "production-grade booking backend infrastructure in typescript",
-      technologies: [
-        "typescript",
-        "zod",
-        "express",
-        "postgreSQL",
-        "prisma",
-        "winston"
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "",
-          icon: <Icons.globe className="size-4" />,
-        },
-      ],
-      image: "/ts-booking.png",
       video:
         "",
     },
