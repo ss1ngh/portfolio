@@ -5,7 +5,7 @@ export const DATA = {
   name: "shreyansh",
   initials: "SS",
   url: "https://ssngh.xyz",
-  summary: "i write code and build apps \n\n learning go, \n\nbackend fundamentals, \n\n& database internals",
+  summary: "i write code and build apps\n\n       \n\nlearning backend fundamentals,\n\n& database internals",
   avatarUrl: "/giga-chad2.jpg",
   skills: [
     { name: "react" },
