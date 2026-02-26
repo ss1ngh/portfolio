@@ -103,6 +103,31 @@ export const DATA = {
 
   projects: [
     {
+      title: "slate",
+      href: "https://github.com/ss1ngh/slate",
+      active: true,
+      description:
+        "high performance, collaborative, whiteboard",
+      technologies: [
+        "next.js",
+        "turborepo",
+        "typescript",
+        "tailwindCSS",
+        "perfect-freehand",
+        "HTML5Canvas",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://slate.ssngh.xyz",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
+      image: "/slate.png",
+      video:
+        "",
+    },
+    {
       title: "annot8",
       href: "https://github.com/ss1ngh/annot8",
       active: true,
@@ -197,32 +222,6 @@ export const DATA = {
         },
       ],
       image: "/shorten.png",
-      video:
-        "",
-    },
-    {
-      title: "tickr - frontend",
-      href: "https://github.com/ss1ngh/tickr",
-      active: true,
-      description:
-        "personalized portfolio tracker",
-      technologies: [
-        "next.js",
-        "better-auth",
-        "tailwind",
-        "typescript",
-        "zod",
-        "postgreSQL",
-        "prisma",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://tickr.ssngh.xyz/",
-          icon: <Icons.globe className="size-4" />,
-        },
-      ],
-      image: "/tickr.png",
       video:
         "",
     },
