@@ -2,7 +2,6 @@ import React from "react";
 import {
   HouseIcon,
   NotebookIcon,
-  BriefcaseIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
   XLogoIcon,

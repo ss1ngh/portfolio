@@ -6,9 +6,9 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-dvh max-w-5xl mx-auto px-6 pt-12 pb-24 items-center selection:bg-[#3235F8] selection:text-white">
+    <main className="flex flex-col min-h-dvh max-w-6xl mx-auto px-6 pt-12 pb-24 items-center selection:bg-[#3235F8] selection:text-white">
       {/* Banner Section */}
-      <section className="w-full max-w-4xl relative mb-12">
+      <section className="w-full max-w-5xl relative mb-12">
         <div className="relative w-full h-56 rounded-4xl overflow-hidden border border-neutral-100 shadow-sm bg-[#F5F5F3]">
           <div
             className="absolute inset-0 z-0 opacity-100"
@@ -45,57 +45,57 @@ export default function Page() {
       </section>
 
       {/* About Me */}
-      <section className="w-full max-w-2xl flex flex-col items-center mt-10">
-        <div className="pl-14 border-l border-transparent w-full max-w-3xl">
-          <div className="space-y-1 mb-10">
-            <h1 className="text-[15px] font-medium lowercase tracking-tight">
-              hi,{" "}
-              <span className="text-base font-bold text-[#0A0A0A]">
-                {DATA.name}
-              </span>{" "}
-              here
-            </h1>
-            <p className="text-[15px] text-[#737373] lowercase italic leading-relaxed">
-              learning by building, breaking and over-engineering.
+      <section className="w-full max-w-5xl flex flex-col items-start mt-10 px-4 lg:px-14">
+        <div className="space-y-1 mb-10">
+          <h1 className="text-[15px] font-medium lowercase tracking-tight">
+            hi,{" "}
+            <span className="text-base font-bold text-[#0A0A0A]">
+              {DATA.name}
+            </span>{" "}
+            here
+          </h1>
+          <p className="text-[15px] text-[#737373] lowercase italic leading-relaxed">
+            learning by building, breaking and over-engineering.
+          </p>
+        </div>
+
+        <div className="space-y-12">
+          <div className="space-y-1">
+            <p className="text-[15px] leading-relaxed lowercase text-[#0A0A0A]">
+              currently learning{" "}
+              <span className="text-[#3235F8] font-medium">
+                how distributed systems work
+              </span>
+              ,
+            </p>
+            <p className="text-[15px] leading-relaxed lowercase text-[#0A0A0A]">
+              and exploring database internals
             </p>
           </div>
-          <div className="space-y-12">
-            <div className="space-y-1">
-              <p className="text-[15px] leading-relaxed lowercase text-[#0A0A0A]">
-                currently learning{" "}
-                <span className="text-[#3235F8] font-medium">
-                  how distributed systems work
+
+          <div className="space-y-4">
+            <h3 className="text-[15px] text-[#0A0A0A] font-bold tracking-wider">
+              stack
+            </h3>
+            <div className="flex flex-wrap gap-x-4 gap-y-3">
+              {DATA.skills.map((skill) => (
+                <span
+                  key={skill.name}
+                  className="text-[15px] font-semibold italic text-[#A3A3A3] hover:text-[#404040] transition-colors duration-200 cursor-default"
+                >
+                  {skill.name}
                 </span>
-                ,
-              </p>
-              <p className="text-[15px] leading-relaxed lowercase text-[#0A0A0A]">
-                and exploring database internals
-              </p>
-            </div>
-            <div className="space-y-4 w-full lg:max-w-2xl">
-              <h3 className="text-[15px] text-[#0A0A0A] font-bold tracking-wider">
-                stack
-              </h3>
-              <div className="flex flex-wrap gap-x-4 gap-y-3">
-                {DATA.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="text-[15px] font-semibold italic text-[#A3A3A3] hover:text-[#404040] transition-colors duration-200 cursor-default"
-                  >
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <div className="w-full max-w-4xl px-4 mt-20 mb-14">
-        <div className="w-full h-0.5 bg-neutral-100" />
+      <div className="w-full max-w-5xl px-4 mt-24 mb-14">
+        <div className="w-full h-px bg-neutral-100" />
       </div>
 
-      <section id="projects-section">
+      <section id="projects-section" className="w-full flex justify-center">
         <ProjectList projects={DATA.projects} />
       </section>
     </main>

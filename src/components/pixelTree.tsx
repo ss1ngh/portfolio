@@ -1,19 +1,19 @@
 "use client";
 
 import { motion, useAnimation } from "motion/react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const PRESET_COLORS = ["#87A454", "#4B6239", "#ACBE62", "#5D7A53", "#3E512F"];
 
 export default function PixelTree() {
-  const [isHovered, setIsHovered] = useState(false);
+
   const controls = useAnimation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const burstBuffer = useRef(0);
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+
     controls.start({
       x: [0, -2, 2, -1, 1, 0],
       rotate: [0, -2, 2, -1, 1, 0],
@@ -28,7 +28,7 @@ export default function PixelTree() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let particles: { 
+    const particles: { 
       x: number; 
       baseX: number; 
       y: number; 
@@ -112,7 +112,6 @@ export default function PixelTree() {
     <div 
       className="relative w-36 h-40 cursor-pointer"
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setIsHovered(true)} 
     >
       <canvas
         ref={canvasRef}
