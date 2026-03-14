@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,22 +18,54 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.summary,
+  // Added SEO Keywords and Authorship
+  keywords: [
+    "Portfolio",
+    "Developer",
+    "Resume",
+    "Freelance",
+    "backend developer",
+    "frontend developer",
+    "web developer",
+    "web design",
+    DATA.name,
+  ],
+  authors: [{ name: DATA.name, url: DATA.url }],
+  creator: DATA.name,
+  // Added base Open Graph Protocol (OGP) data
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: DATA.url,
+    title: DATA.name,
+    description: DATA.summary,
+    siteName: DATA.name,
+  },
+  // Expanded Twitter Card data
+  twitter: {
+    card: "summary_large_image",
+    title: DATA.name,
+    description: DATA.summary,
+    creator: "@_ss1ngh",
+  },
+  // Added Crawler Directives
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // Added Canonical URL configuration
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/pfp.webp",
-  },
-  openGraph: {
-    images: [
-      {
-        url: "/pfp.webp",
-        width: 1200,
-        height: 1200,
-        alt: DATA.name,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    images: ["/pfp.webp"],
   },
 };
 
