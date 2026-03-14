@@ -1,0 +1,84 @@
+"use client";
+
+import { useEffect } from "react";
+import { animate } from "motion/react";
+import {
+  CameraProvider,
+  useCamera,
+  getTranslateForNode
+} from "@/components/canvas/CameraContext";
+import { CanvasNode } from "@/components/canvas/CanvasNode";
+import { HomeContent } from "@/components/canvas/HomeContent";
+import { ProjectsContent } from "@/components/canvas/ProjectsContent";
+import { ProjectDetailContent } from "@/components/projects/project-detail-content";
+import { ReadsContent } from "@/components/canvas/ReadsContent";
+import { BallQuote } from "@/components/baller-quote";
+import { DRONE_SCALE, FOCUSED_SCALE, ANIMATION_CONFIG } from "@/components/canvas/nodes";
+import Navbar from "@/components/navbar";
+import { DATA } from "@/data/resume";
+
+function CanvasInner() {
+  const { zoomRef, panRef } = useCamera();
+
+  useEffect(() => {
+    const zoomLayer = zoomRef.current;
+    const panLayer = panRef.current;
+    if (!zoomLayer || !panLayer) return;
+
+    const { entry } = ANIMATION_CONFIG;
+    const homeTranslate = getTranslateForNode("home");
+
+    zoomLayer.style.transform = `scale(${DRONE_SCALE})`;
+    panLayer.style.transform = `translate(${homeTranslate.x}px, ${homeTranslate.y}px)`;
+
+    const timer = setTimeout(() => {
+      animate(
+        zoomLayer,
+        { scale: FOCUSED_SCALE },
+        { duration: entry.duration, ease: entry.ease },
+      );
+    }, entry.initialDelay * 1000);
+
+    return () => clearTimeout(timer);
+  }, [zoomRef, panRef]);
+
+  return (
+    <>
+      <div className="spatial-viewport" style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative" }}>
+        <div
+          ref={zoomRef}
+          className="zoom-layer"
+          style={{ width: "100%", height: "100%", transformOrigin: "center center", willChange: "transform" }}
+        >
+          <div
+            ref={panRef}
+            className="pan-layer"
+            style={{ width: "100%", height: "100%", willChange: "transform" }}
+          >
+            <BallQuote />
+
+            {/* Content Nodes */}
+            <CanvasNode id="home"><HomeContent /></CanvasNode>
+            <CanvasNode id="projects"><ProjectsContent /></CanvasNode>
+            <CanvasNode id="reads"><ReadsContent /></CanvasNode>
+
+            {DATA.projects.map((proj, idx) => (
+              <CanvasNode key={idx} id={`project-${idx}`}>
+                <ProjectDetailContent project={proj} />
+              </CanvasNode>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Navbar />
+    </>
+  );
+}
+
+export default function SpatialCanvas() {
+  return (
+    <CameraProvider>
+      <CanvasInner />
+    </CameraProvider>
+  );
+}

@@ -1,107 +1,127 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { GithubLogoIcon, GlobeIcon } from "@phosphor-icons/react/dist/ssr";
-import { Project, ProjectLink } from "./types";
-import { motion } from "framer-motion";
 
-interface ProjectCardProps {
+import Image from "next/image";
+
+import {
+  GithubLogoIcon,
+  ArrowUpRightIcon,
+} from "@phosphor-icons/react/dist/ssr";
+
+import { Project, ProjectLink } from "./types";
+
+import { motion } from "motion/react";
+
+import { useCamera } from "@/components/canvas/CameraContext";
+
+export function ProjectCard({
+  project,
+  index,
+  onHover,
+}: {
   project: Project;
   index: number;
-  onHover: (isHovered: boolean) => void;
-}
+  onHover: (h: boolean) => void;
+}) {
+  const { navigateTo } = useCamera();
 
-export function ProjectCard({ project, index, onHover }: ProjectCardProps) {
-  const isEven = index % 2 === 0;
+  // Find the deployment link (Website/Live)
+
   const deploymentLink = project.links?.find(
     (l: ProjectLink) =>
       (l.type === "Website" || l.type === "Live") && l.href !== "",
   );
 
+  // The button specifically uses the live link, fallback to project.href if needed
+
+  const targetUrl = deploymentLink ? deploymentLink.href : project.href;
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`group relative w-full flex flex-col md:flex-row gap-8 md:gap-16 items-start py-16 border-b border-neutral-50 last:border-none ${
-        isEven ? "md:flex-row" : "md:flex-row-reverse"
-      }`}
+      className="group relative flex flex-col rounded-[2.5rem] bg-white border border-neutral-200 shadow-sm hover:shadow-2xl hover:border-[#3235F8]/20 transition-all duration-500 w-full overflow-hidden"
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
     >
-      {/* Index Numbering - Hidden on Mobile */}
-      <span
-        className={`hidden lg:block text-[11px] text-neutral-300 font-mono italic absolute top-20 transition-colors duration-300 group-hover:text-[#3235F8] ${
-          isEven ? "-left-16" : "-right-16"
-        }`}
-      >
-        {String(index + 1).padStart(2, "0")}/
-      </span>
+      {/* 1. IMAGE LAYER: Dynamic Reveal */}
 
-      {/* Visual Side: Browser Mockup */}
-      <div className="relative w-full md:w-1/2 aspect-video group-hover:shadow-2xl transition-all duration-500 rounded-xl overflow-hidden border border-neutral-200 bg-white">
-        {/* Mockup Header (Browser Bar) */}
-        <div className="absolute top-0 left-0 right-0 h-7 bg-neutral-50 border-b border-neutral-200 flex items-center px-3 gap-1.5 z-20">
-          <div className="w-2 h-2 rounded-full bg-neutral-300 group-hover:bg-[#FF5F56] transition-colors duration-500" />
-          <div className="w-2 h-2 rounded-full bg-neutral-300 group-hover:bg-[#FFBD2E] transition-colors duration-500" />
-          <div className="w-2 h-2 rounded-full bg-neutral-300 group-hover:bg-[#27C93F] transition-colors duration-500" />
-        </div>
-
-        {/* Image Container */}
-        <div className="relative w-full h-full pt-7 overflow-hidden bg-neutral-50">
+      <div className="relative w-full max-h-0 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:max-h-96 group-hover:opacity-100 overflow-hidden border-b border-transparent group-hover:border-neutral-100">
+        <div className="relative aspect-video w-full">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
           />
-          {/* Subtle Blue Tint Overlay */}
-          <div className="absolute inset-0 bg-[#3235F8]/5 mix-blend-multiply pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3235F8]/5 to-transparent pointer-events-none" />
       </div>
 
-      {/* Content Side */}
-      <div className="w-full md:w-1/2 flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-          <h4 className="text-[20px] font-bold lowercase text-[#0A0A0A] group-hover:text-[#3235F8] transition-colors duration-300">
-            {project.title}
-          </h4>
+      {/* 2. CONTENT LAYER */}
 
-          <div className="flex items-center gap-5">
-            <Link
-              href={project.href}
-              target="_blank"
-              className="text-[#A3A3A3] hover:text-[#0A0A0A] transition-colors duration-300"
-            >
-              <GithubLogoIcon size={22} />
-            </Link>
-            {deploymentLink && (
-              <Link
-                href={deploymentLink.href}
-                target="_blank"
-                className="text-[#A3A3A3] hover:text-[#3235F8] transition-colors duration-300"
-              >
-                <GlobeIcon size={22} />
-              </Link>
-            )}
+      <div className="flex flex-col p-7 gap-5">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <h4 className="text-[18px] font-bold text-[#0A0A0A] lowercase tracking-tight group-hover:text-[#3235F8] transition-colors duration-300">
+              {project.title}
+            </h4>
+
+            <span className="text-[12px] font-mono text-[#3235F8] font-bold opacity-30">
+              {String(index + 1).padStart(2, "0")}
+            </span>
           </div>
+
+          <p className="text-[14px] text-neutral-500 lowercase leading-relaxed">
+            {project.description}
+          </p>
         </div>
 
-        <p className="text-[15px] text-neutral-500 lowercase leading-relaxed max-w-prose">
-          {project.description}
-        </p>
+        <div className="flex flex-col gap-5">
+          {/* Tech Stack */}
 
-        <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
-          {project.technologies.map((tag: string) => (
-            <span
-              key={tag}
-              className="text-[12px] font-mono font-medium text-neutral-400 lowercase border border-neutral-100 px-2 py-0.5 rounded-md"
+          <div className="flex flex-wrap gap-2">
+            {project.technologies?.map((tech) => (
+              <span
+                key={tech}
+                className="text-[10px] px-2.5 py-1 bg-neutral-50 border border-neutral-100 rounded-lg text-neutral-400 font-medium lowercase"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Actions Row */}
+
+          <div className="flex items-center justify-between pt-4 border-t border-neutral-100">
+            <div className="flex items-center gap-4">
+              <Link
+                href={project.href}
+                target="_blank"
+                className="text-neutral-300 hover:text-black transition-colors"
+              >
+                <GithubLogoIcon size={20} />
+              </Link>
+            </div>
+
+            {/* visit project is the ONLY redirect for the live link */}
+
+            <Link
+              href={targetUrl}
+              target="_blank"
+              className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-400 group-hover:text-[#3235F8] transition-all lowercase cursor-pointer"
             >
-              {tag}
-            </span>
-          ))}
+              visit project
+              <ArrowUpRightIcon
+                size={12}
+                weight="bold"
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </motion.div>

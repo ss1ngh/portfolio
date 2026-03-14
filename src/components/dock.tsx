@@ -13,7 +13,7 @@ const Dock = ({ className, children }: DockProps) => {
   return (
     <motion.div
       className={cn(
-        "mx-auto w-max h-12 flex items-center justify-center rounded-2xl border border-neutral-100 bg-white px-3 gap-2 transition-all duration-300 ease-out hover:gap-4 drop-shadow-lg",
+        "mx-auto w-max h-14 flex items-center justify-center rounded-2xl border border-neutral-200/60 bg-white/90 backdrop-blur-md px-3 gap-2 shadow-xl shadow-[#3235F8]/5",
         className,
       )}
     >
@@ -30,18 +30,14 @@ const DockIcon = ({
   children?: ReactNode;
 }) => {
   return (
-    <motion.div
-      whileHover={{
-        margin: "0 2px",
-      }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    <div
       className={cn(
-        "relative flex aspect-square h-9 w-9 items-center justify-center rounded-xl bg-background shrink-0 cursor-pointer",
+        "relative flex aspect-square h-10 w-10 items-center justify-center rounded-xl shrink-0 cursor-pointer transition-all duration-300 ease-out",
         className,
       )}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

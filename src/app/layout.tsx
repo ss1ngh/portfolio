@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -30,12 +29,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-white text-[#0A0A0A] antialiased relative pb-24 selection:bg-[#3235F8] selection:text-white",
+          "min-h-screen bg-white text-[#0A0A0A] antialiased relative selection:bg-[#3235F8] selection:text-white",
           inter.variable,
         )}
       >
         <TooltipProvider delayDuration={100}>{children}</TooltipProvider>
-        <Navbar />
       </body>
     </html>
   );
