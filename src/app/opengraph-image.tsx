@@ -3,7 +3,6 @@ import { DATA } from "@/data/resume";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-// Keep the Node.js runtime to bypass the 1MB limit
 export const runtime = "nodejs";
 
 export const alt = DATA.name;
@@ -15,18 +14,20 @@ export const contentType = "image/png";
 
 export default async function Image() {
   try {
-    // Read files as Node Buffers and immediately convert them to Base64 Data URIs.
-    // This entirely prevents the "DataView" ArrayBuffer crash.
+    const cabinetGrotesk = readFileSync(
+      join(process.cwd(), "public/fonts/CabinetGrotesk-Medium.ttf"),
+    );
+    const clashDisplay = readFileSync(
+      join(process.cwd(), "public/fonts/ClashDisplay-Semibold.ttf"),
+    );
+
     const pfpBuffer = readFileSync(join(process.cwd(), "public", "pfp.png"));
     const pfpSrc = `data:image/png;base64,${pfpBuffer.toString("base64")}`;
 
-    const bannerBuffer = readFileSync(
-      join(process.cwd(), "public", "banner.png"),
+    const pixelTreeBuffer = readFileSync(
+      join(process.cwd(), "public", "pixelatedTree.png"),
     );
-    const bannerSrc = `data:image/png;base64,${bannerBuffer.toString("base64")}`;
-
-    const systemFontStack =
-      '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif';
+    const pixelTreeSrc = `data:image/png;base64,${pixelTreeBuffer.toString("base64")}`;
 
     return new ImageResponse(
       <div
@@ -35,80 +36,126 @@ export default async function Image() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          position: "relative",
-          backgroundColor: "#000000",
+          backgroundColor: "#FFFFFF",
+          padding: "40px",
         }}
       >
-        <img
-          src={bannerSrc}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        />
-        <div
-          style={{
+            width: "100%",
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            height: "100%",
-            padding: "0 80px",
-            zIndex: 1,
+            flexDirection: "column",
+            backgroundColor: "#FAFAFA",
+            border: "1px solid #E5E5E5",
+            borderRadius: "24px",
+            padding: "60px",
+            position: "relative",
           }}
         >
-          <img
-            src={pfpSrc}
-            alt={DATA.name}
-            style={{
-              width: "400px",
-              height: "400px",
-              borderRadius: "200px",
-              border: "6px solid #ffffff",
-              objectFit: "cover",
-            }}
-          />
+          {/* Top Section: Pixel Tree */}
           <div
             style={{
-              fontFamily: systemFontStack,
-              fontSize: "100px",
-              fontWeight: "900",
-              color: "#ffffff",
-              textAlign: "right",
-              letterSpacing: "-0.02em",
-              maxWidth: "900px",
+              display: "flex",
+              marginBottom: "auto",
             }}
           >
-            {DATA.name}
+            <img
+              src={pixelTreeSrc}
+              alt="Pixel Tree"
+              style={{
+                width: "230px",
+                height: "230px",
+                // borderRadius: "125px",
+                // border: "1px solid #E5E5E5",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+
+          {/* Bottom Section: Text with PFP */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "auto",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center", // Align items vertically in the name container
+                marginBottom: "8px",
+              }}
+            >
+              {/* Shifted PFP */}
+              <img
+                src={pfpSrc}
+                alt={DATA.name}
+                style={{
+                  width: "80px", // Smaller size
+                  height: "80px", // Smaller size
+                  borderRadius: "40px", // Maintain circular shape
+                  border: "1px solid #E5E5E5",
+                  objectFit: "cover",
+                  marginRight: "16px", // Space between PFP and name
+                }}
+              />
+              {/* Name */}
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Clash Display",
+                  fontSize: "100px",
+                  fontWeight: 600,
+                  color: "#0A0A0A",
+                  letterSpacing: "-0.04em",
+                  textTransform: "lowercase",
+                }}
+              >
+                {DATA.name}
+              </div>
+            </div>
+            {/* Tagline and URL */}
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "Cabinet Grotesk",
+                fontSize: "32px",
+                fontWeight: 400,
+                color: "#737373",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              learning by building, breaking and over-engineering •{" "}
+              {DATA.url.replace("https://", "")}
+            </div>
           </div>
         </div>
       </div>,
       {
         ...size,
+        fonts: [
+          {
+            name: "Cabinet Grotesk",
+            data: cabinetGrotesk,
+            weight: 400,
+            style: "normal",
+          },
+          {
+            name: "Clash Display",
+            data: clashDisplay,
+            weight: 600,
+            style: "normal",
+          },
+        ],
       },
     );
   } catch (error) {
-    console.error("Error generating OpenGraph image:", error);
+    console.error("Error generating OG image:", error);
     return new Response(
       `Failed to generate image: ${error instanceof Error ? error.message : "Unknown error"}`,
-      {
-        status: 500,
-      },
+      { status: 500 },
     );
   }
 }
