@@ -1,10 +1,10 @@
-import Navbar from "@/components/navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,6 +19,23 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.summary,
+  icons: {
+    icon: "/pfp.webp",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/pfp.webp",
+        width: 1200,
+        height: 1200,
+        alt: DATA.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    images: ["/pfp.webp"],
+  },
 };
 
 export default function RootLayout({
@@ -30,12 +47,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-white text-[#0A0A0A] antialiased relative pb-24 selection:bg-[#3235F8] selection:text-white",
+          "min-h-screen bg-white text-[#0A0A0A] antialiased relative selection:bg-[#3235F8] selection:text-white",
           inter.variable,
         )}
       >
         <TooltipProvider delayDuration={100}>{children}</TooltipProvider>
-        <Navbar />
       </body>
     </html>
   );

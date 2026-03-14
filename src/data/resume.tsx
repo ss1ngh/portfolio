@@ -8,7 +8,7 @@ import {
   EnvelopeSimpleIcon,
   GlobeIcon,
   ArticleIcon,
-  CodeIcon,
+  FolderIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const Icons = {
@@ -20,7 +20,7 @@ export const Icons = {
   article: ArticleIcon,
   house: HouseIcon,
   notebook: NotebookIcon,
-  code: CodeIcon,
+  projects: FolderIcon,
 };
 
 export const DATA = {
@@ -46,7 +46,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: Icons.house, label: "Home" },
-    { href: "/projects", icon: Icons.code, label: "Projects" },
+    { href: "/projects", icon: Icons.projects, label: "Projects" },
     { href: "/reads", icon: Icons.notebook, label: "Reads" },
   ],
   contact: {
@@ -166,7 +166,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "ts-booking (work in progress)",
+      title: "ts-booking (in progress)",
       href: "https://github.com/ss1ngh/ts-booking",
       active: true,
       description: "learning by over-engineering a booking system backend",
@@ -238,22 +238,22 @@ export const DATA = {
       image: "/shorten.png",
       video: "",
     },
-    {
-      title: "pdf-wiz",
-      href: "https://github.com/ss1ngh/pdf-wiz",
-      active: true,
-      description: "multi pdf chat app",
-      technologies: ["python", "streamlit", "langchain", "RAG"],
-      links: [
-        {
-          type: "Website",
-          href: "https://pdf-wiz.streamlit.app/",
-          icon: <Icons.globe className="size-4" />,
-        },
-      ],
-      image: "/pdf-wiz.png",
-      video: "",
-    },
+    // {
+    //   title: "pdf-wiz",
+    //   href: "https://github.com/ss1ngh/pdf-wiz",
+    //   active: true,
+    //   description: "multi pdf chat app",
+    //   technologies: ["python", "streamlit", "langchain", "RAG"],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://pdf-wiz.streamlit.app/",
+    //       icon: <Icons.globe className="size-4" />,
+    //     },
+    //   ],
+    //   image: "/pdf-wiz.png",
+    //   video: "",
+    // },
   ],
   hackathons: [
     {
@@ -275,6 +275,11 @@ export const DATA = {
     {
       title: "websockets are cool",
       href: "https://datatracker.ietf.org/doc/html/rfc6455",
+      icon: Icons.article,
+    },
+    {
+      title: "redis persistence",
+      href: "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
       icon: Icons.article,
     },
   ],

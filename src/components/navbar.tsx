@@ -9,39 +9,71 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
-import Link from "next/link";
-import { FolderNotchIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "motion/react";
+import { useCamera } from "@/components/canvas/CameraContext";
+
+// Helper function to map hrefs to canvas node IDs
+const getCanvasNodeId = (href: string) => {
+  switch (href) {
+    case "/projects":
+      return "projects";
+    case "/reads":
+      return "reads";
+    case "/":
+    default:
+      return "home";
+  }
+};
 
 export default function Navbar() {
+  const { navigateTo, activeNode } = useCamera();
+
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50">
       <TooltipProvider delayDuration={0}>
         <Dock className="pointer-events-auto">
-          {DATA.navbar
-            .filter((item) => item.href !== "/projects")
-            .map((item) => (
+          {DATA.navbar.map((item) => {
+            const nodeId = getCanvasNodeId(item.href);
+            const isActive = activeNode === nodeId;
+            const isProjects = nodeId === "projects";
+
+            return (
               <Tooltip key={item.href}>
                 <TooltipTrigger asChild>
-                  <Link href={item.href}>
-                    <DockIcon>
-                      <item.icon size={20} />
+                  <button onClick={() => navigateTo(nodeId)}>
+                    <DockIcon
+                      className={
+                        isActive
+                          ? "text-[#3235F8] bg-[#3235F8]/10 ring-1 ring-[#3235F8]/20"
+                          : isProjects
+                            ? "text-[#3235F8] hover:bg-[#3235F8]/5" // Folder icon is always blue, transparent bg
+                            : "text-neutral-500 hover:text-[#3235F8] hover:bg-[#3235F8]/5"
+                      }
+                    >
+                      <item.icon
+                        size={20}
+                        weight={isActive || isProjects ? "fill" : "regular"}
+                      />
                     </DockIcon>
-                  </Link>
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent side="top" sideOffset={12}>
                   <p>{item.label.toLowerCase()}</p>
                   <TooltipArrow />
                 </TooltipContent>
               </Tooltip>
-            ))}
+            );
+          })}
 
-          {/*  Divider */}
-          <motion.div layout className="h-1/2 w-px bg-black/10 mx-1" />
+          {/* Divider */}
+          <motion.div
+            layout
+            className="h-1/2 w-[1.5px] bg-neutral-200/80 mx-2 rounded-full"
+          />
 
-          {/*  Social Links */}
+          {/* Social Links */}
           {Object.entries(DATA.contact.social)
-            .filter(([_, social]) => social.navbar)
+            .filter(([, social]) => social.navbar)
             .map(([name, social]) => (
               <Tooltip key={name}>
                 <TooltipTrigger asChild>
@@ -50,8 +82,8 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <DockIcon>
-                      <social.icon size={20} />
+                    <DockIcon className="text-neutral-500 hover:text-[#3235F8] hover:bg-[#3235F8]/5">
+                      <social.icon size={20} weight="regular" />
                     </DockIcon>
                   </a>
                 </TooltipTrigger>
@@ -61,23 +93,6 @@ export default function Navbar() {
                 </TooltipContent>
               </Tooltip>
             ))}
-
-          {/* Divider */}
-          <motion.div layout className="h-1/2 w-px bg-black/10 mx-1" />
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link href="/#projects-section">
-                <DockIcon className="text-[#3235F8] hover:text-[#3235F8] hover:bg-[#3235F8]/10">
-                  <FolderNotchIcon size={22} weight="fill" />
-                </DockIcon>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="top" sideOffset={12}>
-              <p>projects</p>
-              <TooltipArrow />
-            </TooltipContent>
-          </Tooltip>
         </Dock>
       </TooltipProvider>
     </div>
