@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { animate } from "motion/react";
 import {
   CameraProvider,
   useCamera,
-  getTranslateForNode,
 } from "@/components/canvas/CameraContext";
 import { CanvasNode } from "@/components/canvas/CanvasNode";
 import { HomeContent } from "@/components/canvas/HomeContent";
@@ -14,18 +13,19 @@ import { ProjectDetailContent } from "@/components/projects/project-detail-conte
 import { ReadsContent } from "@/components/canvas/ReadsContent";
 import { BallQuote } from "@/components/baller-quote";
 import {
-  DRONE_SCALE,
+  getAdaptiveScale,
   FOCUSED_SCALE,
   ANIMATION_CONFIG,
+  getTranslateForNode,
 } from "@/components/canvas/nodes";
 import Navbar from "@/components/navbar";
-import { DATA } from "@/data/resume";
 
 function CanvasInner() {
   const { zoomRef, panRef } = useCamera();
   const [isMounted, setIsMounted] = useState(false);
 
-  const homeTranslate = getTranslateForNode("home");
+  const homeTranslate = useMemo(() => getTranslateForNode("home"), []);
+  const initialScale = useMemo(() => getAdaptiveScale(), []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -36,7 +36,7 @@ function CanvasInner() {
 
     const { entry } = ANIMATION_CONFIG;
 
-    zoomLayer.style.transform = `scale(${DRONE_SCALE})`;
+    zoomLayer.style.transform = `scale(${initialScale})`;
     panLayer.style.transform = `translate3d(${homeTranslate.x}px, ${homeTranslate.y}px, 0)`;
 
     const timer = setTimeout(() => {
@@ -48,7 +48,7 @@ function CanvasInner() {
     }, entry.initialDelay * 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [initialScale, homeTranslate]);
 
   return (
     <>
