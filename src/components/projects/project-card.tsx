@@ -106,8 +106,6 @@ export function ProjectCard({
               </Link>
             </div>
 
-            {/* visit project is the ONLY redirect for the live link */}
-
             <Link
               href={targetUrl}
               target="_blank"
