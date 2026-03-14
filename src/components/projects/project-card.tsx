@@ -42,7 +42,7 @@ export function ProjectCard({
       initial={{ opacity: 0, scale: 0.5 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col rounded-[2.5rem] bg-white border border-neutral-200 shadow-sm hover:shadow-2xl hover:border-[#3235F8]/20 transition-all duration-500 w-full overflow-hidden"
+      className="group relative flex flex-col rounded-[2.5rem] bg-white border border-neutral-200 shadow-sm transition-all duration-500 w-full overflow-hidden"
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
     >
@@ -62,7 +62,6 @@ export function ProjectCard({
       </div>
 
       {/* 2. CONTENT LAYER */}
-
       <div className="flex flex-col p-7 gap-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
@@ -70,7 +69,7 @@ export function ProjectCard({
               {project.title}
             </h4>
 
-            <span className="text-[12px] font-mono text-[#3235F8] font-bold opacity-30">
+            <span className="text-[12px] font-mono text-[#3235F8] font-bold">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>

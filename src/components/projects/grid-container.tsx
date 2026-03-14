@@ -5,22 +5,22 @@ import { cn } from "@/lib/utils";
 
 interface GridContainerProps {
   children: ReactNode;
-  size?: number; // e.g., 4 for 4x4, 6 for 6x6
+  size?: number;
   className?: string;
 }
 
 export function GridContainer({
   children,
-  size = 4,
+  size = 2,
   className,
 }: GridContainerProps) {
   return (
     <div
       className={cn("grid w-full h-full", className)}
       style={{
-        gridTemplateColumns: `repeat(${size}, 1fr)`,
-        gridTemplateRows: `repeat(${size}, 1fr)`,
-        gap: "24px",
+        gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))`,
+        gridTemplateRows: "auto",
+        gap: "32px",
       }}
     >
       {children}

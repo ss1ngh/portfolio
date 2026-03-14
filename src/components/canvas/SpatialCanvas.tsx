@@ -5,7 +5,7 @@ import { animate } from "motion/react";
 import {
   CameraProvider,
   useCamera,
-  getTranslateForNode
+  getTranslateForNode,
 } from "@/components/canvas/CameraContext";
 import { CanvasNode } from "@/components/canvas/CanvasNode";
 import { HomeContent } from "@/components/canvas/HomeContent";
@@ -13,7 +13,11 @@ import { ProjectsContent } from "@/components/canvas/ProjectsContent";
 import { ProjectDetailContent } from "@/components/projects/project-detail-content";
 import { ReadsContent } from "@/components/canvas/ReadsContent";
 import { BallQuote } from "@/components/baller-quote";
-import { DRONE_SCALE, FOCUSED_SCALE, ANIMATION_CONFIG } from "@/components/canvas/nodes";
+import {
+  DRONE_SCALE,
+  FOCUSED_SCALE,
+  ANIMATION_CONFIG,
+} from "@/components/canvas/nodes";
 import Navbar from "@/components/navbar";
 import { DATA } from "@/data/resume";
 
@@ -44,11 +48,24 @@ function CanvasInner() {
 
   return (
     <>
-      <div className="spatial-viewport" style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative" }}>
+      <div
+        className="spatial-viewport"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
         <div
           ref={zoomRef}
           className="zoom-layer"
-          style={{ width: "100%", height: "100%", transformOrigin: "center center", willChange: "transform" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            transformOrigin: "center center",
+            willChange: "transform",
+          }}
         >
           <div
             ref={panRef}
@@ -58,15 +75,21 @@ function CanvasInner() {
             <BallQuote />
 
             {/* Content Nodes */}
-            <CanvasNode id="home"><HomeContent /></CanvasNode>
-            <CanvasNode id="projects"><ProjectsContent /></CanvasNode>
-            <CanvasNode id="reads"><ReadsContent /></CanvasNode>
-
+            <CanvasNode id="home">
+              <HomeContent />
+            </CanvasNode>
+            <CanvasNode id="projects">
+              <ProjectsContent />
+            </CanvasNode>
+            <CanvasNode id="reads">
+              <ReadsContent />
+            </CanvasNode>
+            {/* 
             {DATA.projects.map((proj, idx) => (
               <CanvasNode key={idx} id={`project-${idx}`}>
                 <ProjectDetailContent project={proj} />
               </CanvasNode>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

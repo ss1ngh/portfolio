@@ -166,7 +166,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "ts-booking (work in progress)",
+      title: "ts-booking (in progress)",
       href: "https://github.com/ss1ngh/ts-booking",
       active: true,
       description: "learning by over-engineering a booking system backend",

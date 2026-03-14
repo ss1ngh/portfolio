@@ -16,20 +16,20 @@ export const NODE_POSITIONS: Record<string, NodePosition> = {
 // Dynamically generate node positions for projects
 DATA.projects.forEach((_, idx) => {
   NODE_POSITIONS[`project-${idx}`] = {
-    x: 6000 + (idx * 2500), // Spaced out to the right
-    y: 1000,               // Kept roughly in line with main projects
-    width: 1500,           // Larger width for full screen detail
-    height: 1200           // Larger height for full screen detail
+    x: 6000 + idx * 2500, // Spaced out to the right
+    y: 1000, // Kept roughly in line with main projects
+    width: 1500, // Larger width for full screen detail
+    height: 1200, // Larger height for full screen detail
   };
 });
 
-export const DRONE_SCALE = 0.20;
+export const DRONE_SCALE = 0.2;
 export const FOCUSED_SCALE = 1;
 
 export const ANIMATION_CONFIG = {
   entry: {
     initialDelay: 2.0,
-    duration: 4.5,
+    duration: 4.0,
     ease: [0.16, 0, 0.3, 1] as [number, number, number, number],
   },
   navigation: {
