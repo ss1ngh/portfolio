@@ -3,7 +3,7 @@ import { DATA } from "@/data/resume";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-// Explicitly opt OUT of the default Edge runtime to bypass the 1MB limit.
+// Keep the Node.js runtime to bypass the 1MB limit
 export const runtime = "nodejs";
 
 export const alt = DATA.name;
@@ -15,85 +15,89 @@ export const contentType = "image/png";
 
 export default async function Image() {
   try {
-    // Dynamically read the binaries from the local filesystem at runtime.
+    // Read files as Node Buffers and immediately convert them to Base64 Data URIs.
+    // This entirely prevents the "DataView" ArrayBuffer crash.
     const pfpBuffer = readFileSync(join(process.cwd(), "public", "pfp.png"));
-    const bannerBuffer = readFileSync(
-      join(process.cwd(), "public", "banner.png"),
-    );
+    const pfpSrc = `data:image/png;base64,${pfpBuffer.toString("base64")}`;
+
+    const bannerBuffer = readFileSync(join(process.cwd(), "public", "banner.png"));
+    const bannerSrc = `data:image/png;base64,${bannerBuffer.toString("base64")}`;
 
     const systemFontStack =
       '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif';
 
     return new ImageResponse(
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          backgroundColor: "#000000",
-        }}
-      >
-        <img
-          src={bannerBuffer as unknown as string}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
+      (
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        />
-        <div
-          style={{
+            width: "100%",
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            height: "100%",
-            padding: "0 80px",
-            zIndex: 1,
+            flexDirection: "column",
+            position: "relative",
+            backgroundColor: "#000000",
           }}
         >
           <img
-            src={pfpBuffer as unknown as string}
-            alt={DATA.name}
+            src={bannerSrc}
             style={{
-              width: "240px",
-              height: "240px",
-              borderRadius: "120px",
-              border: "6px solid #ffffff",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
               objectFit: "cover",
             }}
           />
           <div
             style={{
-              fontFamily: systemFontStack,
-              fontSize: "72px",
-              fontWeight: "600",
-              color: "#ffffff",
-              textAlign: "right",
-              letterSpacing: "-0.02em",
-              maxWidth: "600px",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+              height: "100%",
+              padding: "0 80px",
+              zIndex: 1,
             }}
           >
-            {DATA.name}
+            <img
+              src={pfpSrc}
+              alt={DATA.name}
+              style={{
+                width: "240px",
+                height: "240px",
+                borderRadius: "120px",
+                border: "6px solid #ffffff",
+                objectFit: "cover",
+              }}
+            />
+            <div
+              style={{
+                fontFamily: systemFontStack,
+                fontSize: "72px",
+                fontWeight: "600",
+                color: "#ffffff",
+                textAlign: "right",
+                letterSpacing: "-0.02em",
+                maxWidth: "600px",
+              }}
+            >
+              {DATA.name}
+            </div>
           </div>
         </div>
-      </div>,
+      ),
       {
         ...size,
       },
