@@ -1,7 +1,10 @@
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-export const runtime = "edge";
+// Explicitly opt OUT of the default Edge runtime to bypass the 1MB limit.
+export const runtime = "nodejs";
 
 export const alt = DATA.name;
 export const size = {
@@ -12,13 +15,11 @@ export const contentType = "image/png";
 
 export default async function Image() {
   try {
-    const pfpBuffer = await fetch(
-      new URL("../../public/pfp.png", import.meta.url),
-    ).then((res) => res.arrayBuffer());
-
-    const bannerBuffer = await fetch(
-      new URL("../../public/banner.png", import.meta.url),
-    ).then((res) => res.arrayBuffer());
+    // Dynamically read the binaries from the local filesystem at runtime.
+    const pfpBuffer = readFileSync(join(process.cwd(), "public", "pfp.png"));
+    const bannerBuffer = readFileSync(
+      join(process.cwd(), "public", "banner.png"),
+    );
 
     const systemFontStack =
       '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif';
@@ -45,8 +46,6 @@ export default async function Image() {
             objectFit: "cover",
           }}
         />
-
-        {/* Overlay Layer for Text Contrast */}
         <div
           style={{
             position: "absolute",
@@ -57,8 +56,6 @@ export default async function Image() {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         />
-
-        {/* Foreground Content Layer */}
         <div
           style={{
             display: "flex",
