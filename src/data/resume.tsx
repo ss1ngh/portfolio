@@ -26,7 +26,7 @@ export const Icons = {
 export const DATA = {
   name: "shreyansh",
   initials: "SS",
-  url: "https://ssngh.xyz",
+  url: "https://www.ssngh.xyz",
   location: "",
   currentWork: "",
   summary: "",
