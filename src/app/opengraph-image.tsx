@@ -20,84 +20,84 @@ export default async function Image() {
     const pfpBuffer = readFileSync(join(process.cwd(), "public", "pfp.png"));
     const pfpSrc = `data:image/png;base64,${pfpBuffer.toString("base64")}`;
 
-    const bannerBuffer = readFileSync(join(process.cwd(), "public", "banner.png"));
+    const bannerBuffer = readFileSync(
+      join(process.cwd(), "public", "banner.png"),
+    );
     const bannerSrc = `data:image/png;base64,${bannerBuffer.toString("base64")}`;
 
     const systemFontStack =
       '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif';
 
     return new ImageResponse(
-      (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+          backgroundColor: "#000000",
+        }}
+      >
+        <img
+          src={bannerSrc}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
         <div
           style={{
-            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+        />
+        <div
+          style={{
             display: "flex",
-            flexDirection: "column",
-            position: "relative",
-            backgroundColor: "#000000",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            height: "100%",
+            padding: "0 80px",
+            zIndex: 1,
           }}
         >
           <img
-            src={bannerSrc}
+            src={pfpSrc}
+            alt={DATA.name}
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
+              width: "400px",
+              height: "400px",
+              borderRadius: "200px",
+              border: "6px solid #ffffff",
               objectFit: "cover",
             }}
           />
           <div
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-              height: "100%",
-              padding: "0 80px",
-              zIndex: 1,
+              fontFamily: systemFontStack,
+              fontSize: "100px",
+              fontWeight: "900",
+              color: "#ffffff",
+              textAlign: "right",
+              letterSpacing: "-0.02em",
+              maxWidth: "900px",
             }}
           >
-            <img
-              src={pfpSrc}
-              alt={DATA.name}
-              style={{
-                width: "240px",
-                height: "240px",
-                borderRadius: "120px",
-                border: "6px solid #ffffff",
-                objectFit: "cover",
-              }}
-            />
-            <div
-              style={{
-                fontFamily: systemFontStack,
-                fontSize: "72px",
-                fontWeight: "600",
-                color: "#ffffff",
-                textAlign: "right",
-                letterSpacing: "-0.02em",
-                maxWidth: "600px",
-              }}
-            >
-              {DATA.name}
-            </div>
+            {DATA.name}
           </div>
         </div>
-      ),
+      </div>,
       {
         ...size,
       },
