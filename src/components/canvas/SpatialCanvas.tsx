@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { animate } from "motion/react";
 import {
   CameraProvider,
@@ -23,17 +23,21 @@ import { DATA } from "@/data/resume";
 
 function CanvasInner() {
   const { zoomRef, panRef } = useCamera();
+  const [isMounted, setIsMounted] = useState(false);
+
+  const homeTranslate = getTranslateForNode("home");
 
   useEffect(() => {
+    setIsMounted(true);
+
     const zoomLayer = zoomRef.current;
     const panLayer = panRef.current;
     if (!zoomLayer || !panLayer) return;
 
     const { entry } = ANIMATION_CONFIG;
-    const homeTranslate = getTranslateForNode("home");
 
     zoomLayer.style.transform = `scale(${DRONE_SCALE})`;
-    panLayer.style.transform = `translate(${homeTranslate.x}px, ${homeTranslate.y}px)`;
+    panLayer.style.transform = `translate3d(${homeTranslate.x}px, ${homeTranslate.y}px, 0)`;
 
     const timer = setTimeout(() => {
       animate(
@@ -44,7 +48,7 @@ function CanvasInner() {
     }, entry.initialDelay * 1000);
 
     return () => clearTimeout(timer);
-  }, [zoomRef, panRef]);
+  }, []);
 
   return (
     <>
@@ -55,6 +59,8 @@ function CanvasInner() {
           height: "100vh",
           overflow: "hidden",
           position: "relative",
+          opacity: isMounted ? 1 : 0,
+          transition: "opacity 0.1s ease-out",
         }}
       >
         <div
@@ -70,7 +76,12 @@ function CanvasInner() {
           <div
             ref={panRef}
             className="pan-layer"
-            style={{ width: "100%", height: "100%", willChange: "transform" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              willChange: "transform",
+              transform: `translate3d(${homeTranslate.x}px, ${homeTranslate.y}px, 0)`,
+            }}
           >
             <BallQuote />
 

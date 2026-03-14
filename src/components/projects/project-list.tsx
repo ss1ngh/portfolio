@@ -27,7 +27,7 @@ export function ProjectList({ projects }: { projects: readonly Project[] }) {
       </div>
 
       {/* Grid Container */}
-      <div className="relative w-full max-w-[1400px] h-[900px] overflow-y-scroll no-scrollbar px-3 mx-auto z-10">
+      <div className="relative w-full max-w-[1400px] h-[900px] overflow-y-scroll no-scrollbar px-3 pt-4 mx-auto z-10">
         <GridContainer size={3}>
           {projects.map((project, index) => (
             <div
@@ -72,9 +72,9 @@ export function ProjectList({ projects }: { projects: readonly Project[] }) {
             right: "-1000px",
             bottom: "-1000px",
             backgroundImage: `
-        linear-gradient(#0A0A0A 1px, transparent 1px), 
-        linear-gradient(90deg, #0A0A0A 1px, transparent 1px)
-      `,
+          linear-gradient(#0A0A0A 1px, transparent 1px), 
+          linear-gradient(90deg, #0A0A0A 1px, transparent 1px)
+        `,
             backgroundSize: "100px 100px",
             backgroundPosition: "center center",
           }}

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +19,23 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.summary,
+  icons: {
+    icon: "/pfp.webp",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/pfp.webp",
+        width: 1200,
+        height: 1200,
+        alt: DATA.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    images: ["/pfp.webp"],
+  },
 };
 
 export default function RootLayout({

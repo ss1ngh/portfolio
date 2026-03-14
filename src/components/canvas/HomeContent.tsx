@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function HomeContent() {
   return (
-    <div className="relative flex flex-col min-h-dvh w-[1152px] px-6 py-16 items-center selection:bg-[#3235F8] selection:text-white">
+    <div className="relative flex flex-col min-h-dvh w-[1200px] px-6 py-16 items-center selection:bg-[#3235F8] selection:text-white">
       {/* label */}
       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-16 text-[15rem] font-black lowercase tracking-tighter text-[#0A0A0A]/5 select-none pointer-events-none whitespace-nowrap">
         about me
@@ -26,7 +26,7 @@ export function HomeContent() {
             <div className="absolute top-4 left-6 w-32 h-20 bg-white/30 blur-2xl rounded-full" />
             <div className="absolute bottom-4 right-12 w-48 h-24 bg-white/40 blur-3xl rounded-full" />
           </div>
-          <div className="absolute right-8 bottom-4 z-20 scale-90">
+          <div className="absolute right-8 bottom-4 z-20 scale-110">
             <PixelTree />
           </div>
         </div>
