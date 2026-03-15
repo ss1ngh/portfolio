@@ -127,8 +127,7 @@ export default async function Image() {
                 letterSpacing: "-0.01em",
               }}
             >
-              learning by building, breaking and over-engineering •{" "}
-              {DATA.url.replace("https://", "")}
+              engineering the modern web • {DATA.url.replace("https://", "")}
             </div>
           </div>
         </div>

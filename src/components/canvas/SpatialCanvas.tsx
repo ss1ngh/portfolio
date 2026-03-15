@@ -14,18 +14,43 @@ import {
   FOCUSED_SCALE,
   ANIMATION_CONFIG,
   getTranslateForNode,
+  MOBILE_BREAKPOINT,
 } from "@/components/canvas/nodes";
 import Navbar from "@/components/navbar";
 
 function CanvasInner() {
-  const { zoomRef, panRef } = useCamera();
+  // Extract activeNode to recalculate coordinates based on the current view
+  const { zoomRef, panRef, activeNode } = useCamera();
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const homeTranslate = useMemo(() => getTranslateForNode("home"), []);
   const initialScale = useMemo(() => getAdaptiveScale(), []);
 
   useEffect(() => {
     setIsMounted(true);
+
+    // Check initial layout constraint
+    const checkMobile = () =>
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    checkMobile();
+
+    // Recalculate spatial translation coordinates when the viewport scales/zooms
+    const handleResize = () => {
+      checkMobile();
+      if (window.innerWidth >= MOBILE_BREAKPOINT && panRef.current) {
+        const newTranslate = getTranslateForNode(activeNode);
+        panRef.current.style.transform = `translate3d(${newTranslate.x}px, ${newTranslate.y}px, 0)`;
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [activeNode, panRef]);
+
+  // Execute entry animation strictly for desktop
+  useEffect(() => {
+    if (!isMounted || isMobile) return;
 
     const zoomLayer = zoomRef.current;
     const panLayer = panRef.current;
@@ -45,8 +70,31 @@ function CanvasInner() {
     }, entry.initialDelay * 1000);
 
     return () => clearTimeout(timer);
-  }, [initialScale, homeTranslate]);
+  }, [isMounted, isMobile, initialScale, homeTranslate, zoomRef, panRef]);
 
+  if (!isMounted) return null;
+
+  //SPA layout for mobile devices
+  if (isMobile) {
+    return (
+      <main className="flex flex-col w-full min-h-screen overflow-x-hidden pb-24 bg-white">
+        <section id="home">
+          <HomeContent />
+        </section>
+        {/* Reduced margin from mt-12 to mt-4 */}
+        <section id="projects" className="mt-4 md:mt-12">
+          <ProjectsContent />
+        </section>
+        {/* Reduced margin from mt-12 to mt-4 */}
+        <section id="reads" className="mt-4 md:mt-12">
+          <ReadsContent />
+        </section>
+        <Navbar />
+      </main>
+    );
+  }
+
+  // Render spatial canvas for desktop architecture
   return (
     <>
       <div
@@ -92,12 +140,6 @@ function CanvasInner() {
             <CanvasNode id="reads">
               <ReadsContent />
             </CanvasNode>
-            {/* 
-            {DATA.projects.map((proj, idx) => (
-              <CanvasNode key={idx} id={`project-${idx}`}>
-                <ProjectDetailContent project={proj} />
-              </CanvasNode>
-            ))} */}
           </div>
         </div>
       </div>
