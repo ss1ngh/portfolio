@@ -11,7 +11,7 @@ export interface NodePosition {
 
 export const NODE_POSITIONS: Record<string, NodePosition> = {
   home: { x: 0, y: 0, width: 1200, height: 1200 },
-  projects: { x: 3500, y: 1000, width: 1500, height: 1200 },
+  projects: { x: 3000, y: 1000, width: 1500, height: 1200 },
   reads: { x: -3000, y: -500, width: 1200, height: 1500 },
 };
 
@@ -33,9 +33,8 @@ export function getTranslateForNode(nodeId: string): { x: number; y: number } {
 
   const cx = node.x + adjustedNodeWidth / 2;
 
-  const cy = adjustedNodeHeight > vh
-    ? node.y + (vh / 2)
-    : node.y + adjustedNodeHeight / 2;
+  const cy =
+    adjustedNodeHeight > vh ? node.y + vh / 2 : node.y + adjustedNodeHeight / 2;
 
   return {
     x: vw / 2 - cx,

@@ -11,9 +11,10 @@ export function ProjectList({ projects }: { projects: readonly Project[] }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative w-full h-full flex flex-col p-12 overflow-visible">
+    // Reduced mobile padding from p-12 to px-0 py-8
+    <section className="relative w-full h-full flex flex-col px-0 py-8 md:p-12 overflow-visible">
       {/* Header remains z-50 to stay above grid */}
-      <div className="w-full flex justify-center z-50 pointer-events-none mb-10 shrink-0">
+      <div className="w-full flex justify-center z-50 pointer-events-none mb-8 md:mb-10 shrink-0">
         <div className="flex items-center w-full max-w-5xl justify-center">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent" />
           <div className="bg-[#3235F8] rounded-2xl px-5 py-1.5 mx-4 shadow-sm flex items-center gap-2 pointer-events-auto shrink-0">
@@ -26,8 +27,8 @@ export function ProjectList({ projects }: { projects: readonly Project[] }) {
         </div>
       </div>
 
-      {/* Grid Container */}
-      <div className="relative w-full max-w-[1400px] h-[900px] overflow-y-scroll no-scrollbar px-3 pt-4 mx-auto z-10">
+      {/* Grid Container - Changed to h-auto and overflow-visible on mobile */}
+      <div className="relative w-full max-w-[1400px] h-auto md:h-[900px] overflow-visible md:overflow-y-scroll no-scrollbar px-2 md:px-3 pt-4 mx-auto z-10">
         <GridContainer size={3}>
           {projects.map((project, index) => (
             <div
@@ -43,12 +44,12 @@ export function ProjectList({ projects }: { projects: readonly Project[] }) {
             </div>
           ))}
 
-          {/* Transparent Filler slots */}
+          {/* Transparent Filler slots - Hidden completely on mobile */}
           {Array.from({ length: Math.max(0, 16 - projects.length) }).map(
             (_, i) => (
               <div
                 key={`filler-${i}`}
-                className="min-h-[400px] bg-transparent"
+                className="hidden md:block min-h-[400px] bg-transparent"
               />
             ),
           )}

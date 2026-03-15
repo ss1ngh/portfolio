@@ -1,18 +1,13 @@
 "use client";
 
 import Link from "next/link";
-
 import Image from "next/image";
-
 import {
   GithubLogoIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react/dist/ssr";
-
 import { Project, ProjectLink } from "./types";
-
 import { motion } from "motion/react";
-
 import { useCamera } from "@/components/canvas/CameraContext";
 
 export function ProjectCard({
@@ -27,14 +22,12 @@ export function ProjectCard({
   const { navigateTo } = useCamera();
 
   // Find the deployment link (Website/Live)
-
   const deploymentLink = project.links?.find(
     (l: ProjectLink) =>
       (l.type === "Website" || l.type === "Live") && l.href !== "",
   );
 
   // The button specifically uses the live link, fallback to project.href if needed
-
   const targetUrl = deploymentLink ? deploymentLink.href : project.href;
 
   return (
@@ -46,15 +39,14 @@ export function ProjectCard({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
     >
-      {/* 1. IMAGE LAYER: Dynamic Reveal */}
-
-      <div className="relative w-full max-h-0 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:max-h-96 group-hover:opacity-100 overflow-hidden border-b border-transparent group-hover:border-neutral-100">
+      {/* 1. IMAGE LAYER: Dynamic Reveal - Restricted to Desktop (md: prefix added) */}
+      <div className="relative w-full max-h-0 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] md:group-hover:max-h-96 md:group-hover:opacity-100 overflow-hidden border-b border-transparent md:group-hover:border-neutral-100">
         <div className="relative aspect-video w-full">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+            className="object-cover object-center transition-transform duration-1000 md:group-hover:scale-105"
           />
         </div>
 
@@ -65,7 +57,7 @@ export function ProjectCard({
       <div className="flex flex-col p-7 gap-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <h4 className="text-[18px] font-bold text-[#0A0A0A] lowercase tracking-tight group-hover:text-[#3235F8] transition-colors duration-300">
+            <h4 className="text-[18px] font-bold text-[#0A0A0A] lowercase tracking-tight md:group-hover:text-[#3235F8] transition-colors duration-300">
               {project.title}
             </h4>
 
@@ -81,7 +73,6 @@ export function ProjectCard({
 
         <div className="flex flex-col gap-5">
           {/* Tech Stack */}
-
           <div className="flex flex-wrap gap-2">
             {project.technologies?.map((tech) => (
               <span
@@ -94,7 +85,6 @@ export function ProjectCard({
           </div>
 
           {/* Actions Row */}
-
           <div className="flex items-center justify-between pt-4 border-t border-neutral-100">
             <div className="flex items-center gap-4">
               <Link
@@ -109,13 +99,13 @@ export function ProjectCard({
             <Link
               href={targetUrl}
               target="_blank"
-              className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-400 group-hover:text-[#3235F8] transition-all lowercase cursor-pointer"
+              className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-400 md:group-hover:text-[#3235F8] transition-all lowercase cursor-pointer"
             >
               visit project
               <ArrowUpRightIcon
                 size={12}
                 weight="bold"
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="transition-transform md:group-hover:translate-x-0.5 md:group-hover:-translate-y-0.5"
               />
             </Link>
           </div>
