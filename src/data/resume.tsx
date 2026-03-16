@@ -62,13 +62,13 @@ export const DATA = {
         name: "LinkedIn",
         url: "https://linkedin.com/in/ss1ngh",
         icon: Icons.linkedin,
-        navbar: false,
+        navbar: true,
       },
       X: {
         name: "X",
         url: "",
         icon: Icons.x,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
