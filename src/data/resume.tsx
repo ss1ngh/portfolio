@@ -137,13 +137,13 @@ export const DATA = {
         "docker",
         "bun"
       ],
-      // links: [
-      //   {
-      //     type: "Website",
-      //     href: "",
-      //     icon: <Icons.globe className="size-4" />,
-      //   },
-      // ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
       image: undefined,
       video: undefined,
     },
@@ -185,13 +185,13 @@ export const DATA = {
         "redis",
         "docker",
       ],
-      // links: [
-      //   {
-      //     type: "Website",
-      //     href: "",
-      //     icon: <Icons.globe className="size-4" />,
-      //   },
-      // ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-4" />,
+        },
+      ],
       image: "/ts-booking.png",
       video: undefined,
     },
