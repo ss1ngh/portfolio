@@ -35,6 +35,7 @@ export const DATA = {
     { name: "react" },
     { name: "next.js" },
     { name: "express" },
+    { name: "bun" },
     { name: "typescript" },
     { name: "node.js" },
     { name: "postgres" },
@@ -125,6 +126,28 @@ export const DATA = {
 
   projects: [
     {
+      title: "dist-job engine",
+      href: "https://github.com/ss1ngh/dist-job-engine",
+      active: true,
+      description: "scalable job processing engine to offload heavy compute tasks to background workers",
+      technologies: [
+        "redis",
+        "bullMQ",
+        "typescript",
+        "docker",
+        "bun"
+      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "",
+      //     icon: <Icons.globe className="size-4" />,
+      //   },
+      // ],
+      image: undefined,
+      video: undefined,
+    },
+    {
       title: "slate",
       href: "https://github.com/ss1ngh/slate",
       active: true,
@@ -145,24 +168,7 @@ export const DATA = {
         },
       ],
       image: "/slate.png",
-      video: "",
-    },
-    {
-      title: "LLMark",
-      href: "https://github.com/ss1ngh/LLMark",
-      active: false,
-      description:
-        "stop scrolling through miles of AI chats—anchor and jump to specific messages instantly using LLMark",
-      technologies: ["react", "typescript", "tailwindcss", "chrome-extension"],
-      links: [
-        {
-          type: "Website",
-          href: "",
-          icon: <Icons.globe className="size-4" />,
-        },
-      ],
-      image: "/LLMark.png",
-      video: "",
+      video: undefined,
     },
     {
       title: "ts-booking",
@@ -179,6 +185,23 @@ export const DATA = {
         "redis",
         "docker",
       ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "",
+      //     icon: <Icons.globe className="size-4" />,
+      //   },
+      // ],
+      image: "/ts-booking.png",
+      video: undefined,
+    },
+    {
+      title: "LLMark",
+      href: "https://github.com/ss1ngh/LLMark",
+      active: false,
+      description:
+        "stop scrolling through miles of AI chats—anchor and jump to specific messages instantly using LLMark",
+      technologies: ["react", "typescript", "tailwindcss", "chrome-extension"],
       links: [
         {
           type: "Website",
@@ -186,8 +209,8 @@ export const DATA = {
           icon: <Icons.globe className="size-4" />,
         },
       ],
-      image: "/ts-booking.png",
-      video: "",
+      image: "/LLMark.png",
+      video: undefined,
     },
     {
       title: "annot8",
@@ -211,32 +234,32 @@ export const DATA = {
         },
       ],
       image: "/annot8.png",
-      video: "",
+      video: undefined,
     },
-    {
-      title: "sh0rten",
-      href: "https://github.com/ss1ngh/sh0rten",
-      active: true,
-      description: "url shortener with qr code generation",
-      technologies: [
-        "react",
-        "tailwind",
-        "javascript",
-        "zod",
-        "express",
-        "mongoDB",
-        "axios",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://sh0rten.vercel.app/",
-          icon: <Icons.globe className="size-4" />,
-        },
-      ],
-      image: "/shorten.png",
-      video: "",
-    },
+    // {
+    //   title: "sh0rten",
+    //   href: "https://github.com/ss1ngh/sh0rten",
+    //   active: true,
+    //   description: "url shortener with qr code generation",
+    //   technologies: [
+    //     "react",
+    //     "tailwind",
+    //     "javascript",
+    //     "zod",
+    //     "express",
+    //     "mongoDB",
+    //     "axios",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://sh0rten.vercel.app/",
+    //       icon: <Icons.globe className="size-4" />,
+    //     },
+    //   ],
+    //   image: "/shorten.png",
+    //   video: "",
+    // },
     // {
     //   title: "pdf-wiz",
     //   href: "https://github.com/ss1ngh/pdf-wiz",
