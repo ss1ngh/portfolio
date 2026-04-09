@@ -144,8 +144,6 @@ export const DATA = {
           icon: <Icons.globe className="size-4" />,
         },
       ],
-      image: undefined,
-      video: undefined,
     },
     {
       title: "slate",
@@ -168,7 +166,6 @@ export const DATA = {
         },
       ],
       image: "/slate.png",
-      video: undefined,
     },
     {
       title: "ts-booking",
@@ -193,7 +190,6 @@ export const DATA = {
         },
       ],
       image: "/ts-booking.png",
-      video: undefined,
     },
     {
       title: "LLMark",
@@ -210,7 +206,6 @@ export const DATA = {
         },
       ],
       image: "/LLMark.png",
-      video: undefined,
     },
     {
       title: "annot8",
@@ -234,7 +229,6 @@ export const DATA = {
         },
       ],
       image: "/annot8.png",
-      video: undefined,
     },
     // {
     //   title: "sh0rten",
