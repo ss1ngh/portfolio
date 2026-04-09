@@ -12,7 +12,7 @@ export interface Project {
   active: boolean;
   description: string;
   technologies: readonly string[];
-  links: readonly ProjectLink[];
-  image: string;
-  video: string;
+  links?: readonly ProjectLink[];
+  image?: string;
+  video?: string;
 }
