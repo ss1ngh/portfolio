@@ -13,6 +13,6 @@ export interface Project {
   description: string;
   technologies: readonly string[];
   links?: readonly ProjectLink[];
-  image?: string;
-  video?: string;
+  image: string;
+  video: string;
 }
